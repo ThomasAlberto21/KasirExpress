@@ -7,7 +7,12 @@ const ProductList = ({ menu }) => {
       <a href="#">
         <img
           className="rounded-t-lg"
-          src="/docs/images/blog/image-1.jpg"
+          src={
+            'assets/images/' +
+            menu.category.nama.toLowerCase() +
+            '/' +
+            menu.gambar
+          }
           alt=""
         />
       </a>

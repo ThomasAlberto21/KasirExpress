@@ -31,16 +31,16 @@ export default class App extends React.Component {
 
     return (
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-6 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-1 gap-4 lg:ml-0 md:ml-80">
           <div className="col-span-1">
             <Sidebar />
           </div>
 
-          <div className="col-span-3 my-5 lg:mx-5 mx-3">
+          <div className="col-span-3 my-5 lg:mx-5 mx-3 ">
             <h1 className="font-bold text-gray-700 mb-5 text-2xl">
               Daftar Menu
             </h1>
-            <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-3 ">
+            <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1  gap-3 ">
               {menus &&
                 menus.map((menu) => <ProductList key={menu.id} menu={menu} />)}
             </div>
