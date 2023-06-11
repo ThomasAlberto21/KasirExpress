@@ -104,7 +104,7 @@
       "nama": "Pangsit 6 pcs",
       "harga": 5000,
       "is_ready": true,
-      "gambar": "pangsit.jpg",
+      "gambar": "https://img-global.cpcdn.com/recipes/8f25fc947a4babf3/680x482cq70/pangsit-goreng-foto-resep-utama.jpg",
       "category": {
         "id": 3,
         "nama": "Cemilan"
@@ -116,7 +116,7 @@
       "nama": "Kentang Goreng",
       "harga": 5000,
       "is_ready": true,
-      "gambar": "kentang-goreng.jpg",
+      "gambar": "https://asset.kompas.com/crops/2n5YA32FK8u-lhUSE-pEXRatRBc=/0x0:1000x667/750x500/data/photo/2019/12/09/5dee4f6a9e1dd.jpg",
       "category": {
         "id": 3,
         "nama": "Cemilan"
@@ -128,7 +128,7 @@
       "nama": "Cheese Burger",
       "harga": 15000,
       "is_ready": true,
-      "gambar": "cheese-burger.jpg",
+      "gambar": "https://cdn.pixabay.com/photo/2016/03/05/19/02/abstract-1238247_640.jpg",
       "category": {
         "id": 3,
         "nama": "Cemilan"
@@ -140,7 +140,7 @@
       "nama": "Coffe Late",
       "harga": 15000,
       "is_ready": true,
-      "gambar": "coffe-late.jpg",
+      "gambar": "https://e1.pxfuel.com/desktop-wallpaper/396/611/desktop-wallpaper-latte-coffee-art.jpg",
       "category": {
         "id": 2,
         "nama": "Minuman"
@@ -152,7 +152,7 @@
       "nama": "Es Jeruk",
       "harga": 7000,
       "is_ready": true,
-      "gambar": "es-jeruk.jpg",
+      "gambar": "https://cdn0-production-images-kly.akamaized.net/6ewV6SLo6jeQ7akZf147JNbTc6c=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3292404/original/099380600_1604998663-pexels-photo-96974.jpeg",
       "category": {
         "id": 2,
         "nama": "Minuman"
@@ -164,7 +164,7 @@
       "nama": "Es Teh",
       "harga": 5000,
       "is_ready": true,
-      "gambar": "es-teh.jpg",
+      "gambar": "https://nnc-media.netralnews.com/IMG-Netral-News-Admin-19-ZA95H3UQD2.jpg",
       "category": {
         "id": 2,
         "nama": "Minuman"
@@ -176,7 +176,7 @@
       "nama": "Teh Hangat",
       "harga": 3000,
       "is_ready": true,
-      "gambar": "teh-hangat.jpg",
+      "gambar": "https://static.republika.co.id/uploads/images/inpicture_slide/teh-panas-_160628044411-584.jpg",
       "category": {
         "id": 2,
         "nama": "Minuman"
