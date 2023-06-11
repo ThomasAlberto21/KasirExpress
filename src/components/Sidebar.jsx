@@ -33,7 +33,7 @@ const Sidebar = () => {
 
       <aside
         id='default-sidebar'
-        className={`fixed top-0 left-0 z-40 w-full lg:w-1/5 md:w-1/3 h-screen transition-transform ${
+        className={`fixed top-0 left-0 z-40 w-full lg:w-1/6 md:w-1/3 h-screen transition-transform ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } sm:translate-x-0`}
         aria-label='Sidebar'

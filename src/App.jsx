@@ -1,5 +1,6 @@
 import Sidebar from './components/Sidebar';
 import ProductList from './components/ProductList';
+import Results from './components/Results';
 
 const App = () => {
   return (
@@ -7,8 +8,11 @@ const App = () => {
       <div className='col-span-1'>
         <Sidebar />
       </div>
-      <div className='col-span-2'>
+      <div className='col-span-3'>
         <ProductList />
+      </div>
+      <div className='col-span-1'>
+        <Results />
       </div>
     </div>
   );
