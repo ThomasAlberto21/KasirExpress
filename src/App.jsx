@@ -30,7 +30,7 @@ export default class App extends React.Component {
     const { menus } = this.state;
 
     return (
-      <div className="container">
+      <main className="container">
         <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-1 gap-4 lg:ml-0 md:ml-80">
           <div className="col-span-1">
             <Sidebar />
@@ -50,7 +50,7 @@ export default class App extends React.Component {
             <Results />
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 }
