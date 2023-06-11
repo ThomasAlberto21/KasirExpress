@@ -27,17 +27,28 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.menus);
+    const { menus } = this.state;
+
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3 gap-4">
-        <div className="col-span-1">
-          <Sidebar />
-        </div>
-        <div className="col-span-3">
-          <ProductList />
-        </div>
-        <div className="col-span-1">
-          <Results />
+      <div className="container">
+        <div className="grid grid-cols-3 lg:grid-cols-5 md:grid-cols-3 gap-4">
+          <div className="col-span-1">
+            <Sidebar />
+          </div>
+
+          <div className="col-span-3 my-5 mx-2">
+            <h1 className="font-bold text-gray-700 mb-5 text-2xl">
+              Daftar Menu
+            </h1>
+            <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-3">
+              {menus &&
+                menus.map((menu) => <ProductList key={menu.id} menu={menu} />)}
+            </div>
+          </div>
+
+          <div className="col-span-1">
+            <Results />
+          </div>
         </div>
       </div>
     );
