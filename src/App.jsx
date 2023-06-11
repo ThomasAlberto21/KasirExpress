@@ -1,10 +1,10 @@
-import { Navbar } from './components/Navbar';
+import Sidebar from './components/Sidebar';
 
 const App = () => {
  return (
-  <div className='bg-red-500'>
-   <Navbar />
-  </div>
+  <>
+   <Sidebar />
+  </>
  );
 };
 
