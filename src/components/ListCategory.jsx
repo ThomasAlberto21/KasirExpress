@@ -39,7 +39,7 @@ export default class ListCategory extends React.Component {
   render() {
     const { categories } = this.state;
     const { sidebarOpen, toggleSidebar } = this.props;
-    const { changeCategory } = this.props;
+    const { changeCategory, categoriYangDipilih } = this.props;
 
     return (
       <aside
@@ -61,7 +61,7 @@ export default class ListCategory extends React.Component {
               data-drawer-toggle="default-sidebar"
               aria-controls="default-sidebar"
               type="button"
-              className="ms-auto px-3 py-2 text-sm rounded-md  sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  dark:hover:bg-gray-700  dark:focus:ring-gray-600  float-right bg-white"
+              className="ms-auto px-3 py-2 text-sm rounded-md sm:hidden float-right bg-white"
             >
               <BsXLg />
             </button>
@@ -70,18 +70,23 @@ export default class ListCategory extends React.Component {
           {/* Links Navigations */}
           {categories &&
             categories.map((category) => (
-              <ul className="space-y-2 font-medium mb-3" key={category.id}>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 "
-                    onClick={() => changeCategory(category.nama)}
-                  >
-                    <span className="ml-3 flex justify-center items-center text-xl">
+              <ul
+                className="space-y-2 font-medium mb-3 cursor-pointer"
+                key={category.id}
+              >
+                <li
+                  className={
+                    categoriYangDipilih === category.nama &&
+                    'bg-blue-600 text-gray-700 rounded-md '
+                  }
+                  onClick={() => changeCategory(category.nama)}
+                >
+                  <div className="flex items-center p-3 rounded-md">
+                    <span className="ml-3 flex justify-center items-center text-xl text-white">
                       <Icon nama={category.nama} />
                       {category.nama}
                     </span>
-                  </a>
+                  </div>
                 </li>
               </ul>
             ))}
