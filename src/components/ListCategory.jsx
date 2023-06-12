@@ -2,6 +2,17 @@
 import React from 'react';
 import axios from 'axios';
 import { API_URL } from '../api/api';
+import { FaUtensils, FaCoffee, FaCheese } from 'react-icons/fa';
+
+// eslint-disable-next-line react-refresh/only-export-components
+const Icon = ({ nama }) => {
+  if (nama === 'Makanan')
+    return <FaUtensils Icon={FaUtensils} className="text-white mr-4 text-xl" />;
+  if (nama === 'Minuman')
+    return <FaCoffee Icon={FaCoffee} className="text-white mr-4 text-xl" />;
+  if (nama === 'Cemilan')
+    return <FaCheese Icon={FaCheese} className="text-white mr-4 text-xl" />;
+};
 
 export default class ListCategory extends React.Component {
   constructor(props) {
@@ -66,23 +77,16 @@ export default class ListCategory extends React.Component {
           {/* Links Navigations */}
           {categories &&
             categories.map((category) => (
-              <ul className="space-y-2 font-medium" key={category.id}>
+              <ul className="space-y-2 font-medium mb-3" key={category.id}>
                 <li>
                   <a
                     href="#"
                     className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <svg
-                      aria-hidden="true"
-                      className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                      <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                    </svg>
-                    <span className="ml-3">{category.nama}</span>
+                    <span className="ml-3 flex justify-center items-center text-xl">
+                      <Icon nama={category.nama} />
+                      {category.nama}
+                    </span>
                   </a>
                 </li>
               </ul>
