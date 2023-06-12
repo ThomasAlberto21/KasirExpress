@@ -49,7 +49,7 @@ export default class ListCategory extends React.Component {
         } sm:translate-x-0`}
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div className="h-full px-3 py-4 overflow-y-auto  bg-gray-800">
           <div className="flex justify-center items-center mb-5">
             <h1 className="font-bold text-white text-start text-2xl">
               KasirExpress
