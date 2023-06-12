@@ -9,7 +9,7 @@ const Sidebar = () => {
   };
 
   return (
-    <>
+    <div>
       <button
         onClick={toggleSidebar}
         data-drawer-target="default-sidebar"
@@ -22,7 +22,7 @@ const Sidebar = () => {
       </button>
 
       <ListCategory sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-    </>
+    </div>
   );
 };
 
