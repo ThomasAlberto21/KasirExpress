@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import { numberWithCommas } from '../utils/numberWithCommas';
 
-/* eslint-disable react/prop-types */
 const ProductList = ({ menu }) => {
   return (
     <div className="max-w-lg rounded-lg shadow bg-gray-800  ">

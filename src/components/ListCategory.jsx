@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import axios from 'axios';
@@ -5,7 +6,6 @@ import { API_URL } from '../api/api';
 import { FaUtensils, FaCoffee, FaCheese } from 'react-icons/fa';
 import { BsXLg } from 'react-icons/bs';
 
-// eslint-disable-next-line react-refresh/only-export-components
 const Icon = ({ nama }) => {
   if (nama === 'Makanan')
     return <FaUtensils Icon={FaUtensils} className="text-white mr-4 text-xl" />;
