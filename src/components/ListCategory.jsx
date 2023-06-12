@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import { API_URL } from '../api/api';
 import { FaUtensils, FaCoffee, FaCheese } from 'react-icons/fa';
+import { BsXLg } from 'react-icons/bs';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Icon = ({ nama }) => {
@@ -61,16 +62,7 @@ export default class ListCategory extends React.Component {
               type="button"
               className="ms-auto px-3 py-2 text-sm rounded-md  sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  dark:hover:bg-gray-700  dark:focus:ring-gray-600  float-right bg-white"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-x-lg text-gray-700 hover:text-white"
-                viewBox="0 0 16 16"
-              >
-                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-              </svg>
+              <BsXLg />
             </button>
           </div>
 

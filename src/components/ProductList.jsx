@@ -3,7 +3,7 @@ import { numberWithCommas } from '../utils/numberWithCommas';
 /* eslint-disable react/prop-types */
 const ProductList = ({ menu }) => {
   return (
-    <div className="max-w-xl  rounded-lg shadow bg-gray-800  ">
+    <div className="max-w-lg rounded-lg shadow bg-gray-800  ">
       <a href="#">
         <img
           className="rounded-t-lg w-full h-52"
