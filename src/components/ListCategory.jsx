@@ -39,6 +39,7 @@ export default class ListCategory extends React.Component {
   render() {
     const { categories } = this.state;
     const { sidebarOpen, toggleSidebar } = this.props;
+    const { changeCategory } = this.props;
 
     return (
       <aside
@@ -73,7 +74,8 @@ export default class ListCategory extends React.Component {
                 <li>
                   <a
                     href="#"
-                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 "
+                    onClick={() => changeCategory(category.nama)}
                   >
                     <span className="ml-3 flex justify-center items-center text-xl">
                       <Icon nama={category.nama} />

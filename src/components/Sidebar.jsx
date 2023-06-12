@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import ListCategory from './ListCategory';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  const { changeCategory, categoriYangDipilih } = props;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -21,7 +23,12 @@ const Sidebar = () => {
         <GiHamburgerMenu className="text-white text-2xl" />
       </button>
 
-      <ListCategory sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+      <ListCategory
+        sidebarOpen={sidebarOpen}
+        toggleSidebar={toggleSidebar}
+        changeCategory={changeCategory}
+        categoriYangDipilih={categoriYangDipilih}
+      />
     </div>
   );
 };

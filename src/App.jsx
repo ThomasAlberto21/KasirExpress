@@ -32,16 +32,29 @@ export default class App extends React.Component {
       categoriYangDipilih: value,
       menus: [],
     });
+
+    axios
+      .get(API_URL + 'products?category.nama=' + value)
+      .then((res) => {
+        const menus = res.data;
+        this.setState({ menus });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   render() {
-    const { menus } = this.state;
+    const { menus, categoriYangDipilih } = this.state;
 
     return (
       <main className="container">
         <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-1 gap-4 lg:ml-0 md:ml-80">
           <div className="col-span-1">
-            <Sidebar />
+            <Sidebar
+              changeCategory={this.changeCategory}
+              categoriYangDipilih={categoriYangDipilih}
+            />
           </div>
 
           <div className="col-span-3 lg:my-4 md:mb-5 lg:mx-5 mx-3 ">
