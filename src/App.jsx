@@ -39,6 +39,20 @@ export default class App extends React.Component {
       });
   }
 
+  componentDidUpdate(prevState) {
+    if (this.state.keranjangs !== prevState.keranjangs) {
+      axios
+        .get(API_URL + 'keranjangs')
+        .then((res) => {
+          const keranjangs = res.data;
+          this.setState({ keranjangs });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+
   changeCategory = (value) => {
     this.setState({
       categoriYangDipilih: value,
@@ -132,7 +146,7 @@ export default class App extends React.Component {
             </div>
           </div>
 
-          <div className="col-span-1 my-4 mx-5">
+          <div className="col-span-1 my-4 mx-5 w-full">
             <h1 className="font-bold text-gray-700 mb-5 text-2xl">Keranjang</h1>
             <Results keranjangs={keranjangs} />
           </div>
