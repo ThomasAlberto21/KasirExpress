@@ -48,7 +48,7 @@ export default class App extends React.Component {
 
   addCarts = (value) => {
     axios
-      .get(API_URL + 'keranjang?product.id' + value.id)
+      .get(API_URL + 'keranjangs?product.id=' + value.id)
       .then((res) => {
         if (res.data.length === 0) {
           const keranjang = {
