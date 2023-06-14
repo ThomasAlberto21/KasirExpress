@@ -13,7 +13,7 @@ export default class App extends React.Component {
     this.state = {
       menus: [],
       categoriYangDipilih: 'Makanan',
-      masukKeranjangs: [],
+      keranjangs: [],
     };
   }
 
@@ -23,6 +23,16 @@ export default class App extends React.Component {
       .then((res) => {
         const menus = res.data;
         this.setState({ menus });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .get(API_URL + 'keranjangs')
+      .then((res) => {
+        const keranjangs = res.data;
+        this.setState({ keranjangs });
       })
       .catch((error) => {
         console.log(error);
@@ -94,7 +104,7 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { menus, categoriYangDipilih } = this.state;
+    const { menus, categoriYangDipilih, keranjangs } = this.state;
 
     return (
       <main className="container">
@@ -123,7 +133,7 @@ export default class App extends React.Component {
           </div>
 
           <div className="col-span-1">
-            <Results />
+            <Results keranjangs={keranjangs} />
           </div>
         </div>
       </main>
