@@ -7,28 +7,36 @@ export default class Results extends React.Component {
     const { keranjangs } = this.props;
 
     return (
-      <div className="w-full">
+      <>
         {keranjangs.length !== 0 && (
-          <div className="w-full">
+          <div className="lg:w-96 w-full">
             {keranjangs.map((menuKeranjang) => (
               <div
-                className="flex justify-between w-full "
+                className="flex mb-6 border-2 border-gray-700 p-4 rounded-md"
                 key={menuKeranjang.id}
               >
-                <div className="bg-gray-100 text-gray-800 text-sm font-semibold w-6 h-6 inline-flex items-center rounded-full mr-2 dark:bg-gray-700 dark:text-gray-300">
+                {/* Badge */}
+                <div className="bg-blue-600 text-white font-semibold w-6 h-6 inline-flex items-center rounded-full mr-2">
                   <p className="text-white mx-auto">{menuKeranjang.jumlah}</p>
                 </div>
-                <div className="text-black">
-                  <h1 className="font-semibold">
-                    {menuKeranjang.product.nama}
-                  </h1>
-                  <p> Rp. {numberWithCommas(menuKeranjang.product.harga)}</p>
+
+                {/* Deskripsi */}
+                <div className="text-black ms-3">
+                  <h1 className="font-normal">{menuKeranjang.product.nama}</h1>
+                  <p className="font-normal">
+                    Rp. {numberWithCommas(menuKeranjang.product.harga)}
+                  </p>
                 </div>
+
+                {/* Total Harga */}
+                <p className="font-semibold ms-auto">
+                  Rp. {numberWithCommas(menuKeranjang.total_harga)}
+                </p>
               </div>
             ))}
           </div>
         )}
-      </div>
+      </>
     );
   }
 }
