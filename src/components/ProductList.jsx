@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { numberWithCommas } from '../utils/numberWithCommas';
 
-const ProductList = ({ menu }) => {
+const ProductList = ({ menu, addCarts }) => {
   return (
     <div className="max-w-lg rounded-lg shadow bg-gray-800  ">
       <a href="#">
@@ -23,7 +23,10 @@ const ProductList = ({ menu }) => {
           Rp. {numberWithCommas(menu.harga)}
         </p>
 
-        <button className="w-full px-5 py-3 text-sm font-semibold text-center text-white bg-blue-600 rounded-md mt-5 mb-2 hover:bg-blue-700">
+        <button
+          className="w-full px-5 py-3 text-sm font-semibold text-center text-white bg-blue-600 rounded-md mt-5 mb-2 hover:bg-blue-700"
+          onClick={() => addCarts(menu)}
+        >
           Tambah Ke Keranjang
         </button>
       </div>

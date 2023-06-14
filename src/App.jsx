@@ -12,6 +12,7 @@ export default class App extends React.Component {
     this.state = {
       menus: [],
       categoriYangDipilih: 'Makanan',
+      masukKeranjangs: [],
     };
   }
 
@@ -44,6 +45,10 @@ export default class App extends React.Component {
       });
   };
 
+  addCarts = (value) => {
+    console.log(value);
+  };
+
   render() {
     const { menus, categoriYangDipilih } = this.state;
 
@@ -63,7 +68,7 @@ export default class App extends React.Component {
             </h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4">
               {menus &&
-                menus.map((menu) => <ProductList key={menu.id} menu={menu} />)}
+                menus.map((menu) => <ProductList key={menu.id} menu={menu} addCarts={this.addCarts}/>)}
             </div>
           </div>
 
