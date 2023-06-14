@@ -132,7 +132,8 @@ export default class App extends React.Component {
             </div>
           </div>
 
-          <div className="col-span-1">
+          <div className="col-span-1 my-4 mx-5">
+            <h1 className="font-bold text-gray-700 mb-5 text-2xl">Keranjang</h1>
             <Results keranjangs={keranjangs} />
           </div>
         </div>
