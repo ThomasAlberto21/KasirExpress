@@ -47,19 +47,46 @@ export default class App extends React.Component {
   };
 
   addCarts = (value) => {
-    const keranjang = {
-      jumlah: 1,
-      total_harga: value.harga,
-      product: value,
-    };
-
     axios
-      .post(API_URL + 'keranjangs', keranjang)
-      .then(() => {
-        Swal.fire({
-          icon: 'success',
-          title: keranjang.product.nama + ' Sukses Masuk Keranjang',
-        });
+      .get(API_URL + 'keranjang?product.id' + value.id)
+      .then((res) => {
+        if (res.data.length === 0) {
+          const keranjang = {
+            jumlah: 1,
+            total_harga: value.harga,
+            product: value,
+          };
+
+          axios
+            .post(API_URL + 'keranjangs', keranjang)
+            .then(() => {
+              Swal.fire({
+                icon: 'success',
+                title: keranjang.product.nama + ' Sukses Masuk Keranjang',
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          const keranjang = {
+            jumlah: res.data[0].jumlah + 1,
+            total_harga: res.data[0].total_harga + value.harga,
+            product: value,
+          };
+
+          axios
+            .put(API_URL + 'keranjangs/' + res.data[0].id, keranjang)
+            .then(() => {
+              Swal.fire({
+                icon: 'success',
+                title: keranjang.product.nama + ' Sukses Masuk Keranjang',
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
       })
       .catch((error) => {
         console.log(error);
