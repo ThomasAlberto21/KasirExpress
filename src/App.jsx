@@ -59,8 +59,6 @@ export default class App extends React.Component {
         Swal.fire({
           icon: 'success',
           title: keranjang.product.nama + ' Sukses Masuk Keranjang',
-          showConfirmButton: false,
-          timer: 1500,
         });
       })
       .catch((error) => {
