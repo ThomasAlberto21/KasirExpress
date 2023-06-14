@@ -22,6 +22,10 @@ const ProductList = ({ menu }) => {
         <p className="mb-3 font-normal text-white">
           Rp. {numberWithCommas(menu.harga)}
         </p>
+
+        <button className="w-full px-5 py-3 text-sm font-semibold text-center text-white bg-blue-600 rounded-md mt-5 mb-2 hover:bg-blue-700">
+          Tambah Ke Keranjang
+        </button>
       </div>
     </div>
   );
