@@ -4,6 +4,7 @@ import ProductList from './components/ProductList';
 import Results from './components/Results';
 import axios from 'axios';
 import { API_URL } from './api/api';
+import Swal from 'sweetalert2';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -46,7 +47,25 @@ export default class App extends React.Component {
   };
 
   addCarts = (value) => {
-    console.log(value);
+    const keranjang = {
+      jumlah: 1,
+      total_harga: value.harga,
+      product: value,
+    };
+
+    axios
+      .post(API_URL + 'keranjangs', keranjang)
+      .then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: keranjang.product.nama + ' Sukses Masuk Keranjang',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   render() {
@@ -68,7 +87,13 @@ export default class App extends React.Component {
             </h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4">
               {menus &&
-                menus.map((menu) => <ProductList key={menu.id} menu={menu} addCarts={this.addCarts}/>)}
+                menus.map((menu) => (
+                  <ProductList
+                    key={menu.id}
+                    menu={menu}
+                    addCarts={this.addCarts}
+                  />
+                ))}
             </div>
           </div>
 
