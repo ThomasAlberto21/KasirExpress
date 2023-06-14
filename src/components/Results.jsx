@@ -9,10 +9,10 @@ export default class Results extends React.Component {
     return (
       <>
         {keranjangs.length !== 0 && (
-          <div className="lg:w-96 ">
+          <div className="lg:w-96">
             {keranjangs.map((menuKeranjang) => (
               <div
-                className="flex mb-6 border-2 border-gray-700 p-4 rounded-md"
+                className="flex mb-6 border-b-2 border-gray-300 p-4"
                 key={menuKeranjang.id}
               >
                 {/* Badge */}
