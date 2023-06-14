@@ -29,7 +29,7 @@ export default class Results extends React.Component {
                 </div>
 
                 {/* Total Harga */}
-                <p className="font-semibold ms-auto">
+                <p className="font-semibold ms-auto text-gray-700">
                   Rp. {numberWithCommas(menuKeranjang.total_harga)}
                 </p>
               </div>
