@@ -107,7 +107,7 @@ export default class App extends React.Component {
     const { menus, categoriYangDipilih, keranjangs } = this.state;
 
     return (
-      <main className="container">
+      <main className="container w-full">
         <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-1 gap-4 lg:ml-0 md:ml-80">
           <div className="col-span-1">
             <Sidebar
@@ -132,8 +132,9 @@ export default class App extends React.Component {
             </div>
           </div>
 
-          <div className="col-span-1 my-4 mx-5">
+          <div className="col-span-1 my-4 mx-5 w-full">
             <h1 className="font-bold text-gray-700 mb-5 text-2xl">Keranjang</h1>
+
             <Results keranjangs={keranjangs} />
           </div>
         </div>

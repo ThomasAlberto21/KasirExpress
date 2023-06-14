@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { numberWithCommas } from '../utils/numberWithCommas';
 
 export default class Results extends React.Component {
   render() {
@@ -8,29 +9,21 @@ export default class Results extends React.Component {
     return (
       <div className="w-full">
         {keranjangs.length !== 0 && (
-          <div>
+          <div className="w-full">
             {keranjangs.map((menuKeranjang) => (
               <div
+                className="flex justify-between w-full "
                 key={menuKeranjang.id}
-                className=""
               >
-                <ul className="mb-8 space-y-4 text-left text-gray-500 dark:text-gray-400">
-                  <li className="flex items-center space-x-3">
-                    <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>{menuKeranjang.product.nama}</span>
-                  </li>
-                </ul>
+                <div className="bg-gray-100 text-gray-800 text-sm font-semibold w-6 h-6 inline-flex items-center rounded-full mr-2 dark:bg-gray-700 dark:text-gray-300">
+                  <p className="text-white mx-auto">{menuKeranjang.jumlah}</p>
+                </div>
+                <div className="text-black">
+                  <h1 className="font-semibold">
+                    {menuKeranjang.product.nama}
+                  </h1>
+                  <p> Rp. {numberWithCommas(menuKeranjang.product.harga)}</p>
+                </div>
               </div>
             ))}
           </div>
