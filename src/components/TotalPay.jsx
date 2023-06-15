@@ -10,12 +10,18 @@ export default class TotalPay extends React.Component {
     }, 0);
 
     return (
-      <div className="flex justify-between">
-        <h4 className="text-blue-500 font-bold">Total Bayar :</h4>
-        <p className="ms-auto font-semibold text-gray-700">
-          Rp. {numberWithCommas(totalBayar)}
-        </p>
-      </div>
+      <>
+        <div className="flex justify-between">
+          <h4 className="text-blue-500 font-bold">Total Bayar :</h4>
+          <p className="ms-auto font-semibold text-gray-700">
+            Rp. {numberWithCommas(totalBayar)}
+          </p>
+        </div>
+
+        <button className="bg-blue-500 w-full py-3 rounded-md text-white mt-5 font-bold hover:bg-blue-700">
+          Bayar
+        </button>
+      </>
     );
   }
 }
