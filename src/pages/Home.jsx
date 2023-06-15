@@ -28,10 +28,6 @@ export default class Home extends React.Component {
         console.log(error);
       });
 
-    this.getListKeranjangs();
-  }
-
-  getListKeranjangs = () => {
     axios
       .get(API_URL + 'keranjangs')
       .then((res) => {
@@ -41,7 +37,21 @@ export default class Home extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-  };
+  }
+
+  componentDidUpdate(prevState) {
+    if (this.state.keranjangs !== prevState.keranjangs) {
+      axios
+        .get(API_URL + 'keranjangs')
+        .then((res) => {
+          const keranjangs = res.data;
+          this.setState({ keranjangs });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
 
   changeCategory = (value) => {
     this.setState({
@@ -74,7 +84,6 @@ export default class Home extends React.Component {
           axios
             .post(API_URL + 'keranjangs', keranjang)
             .then(() => {
-              this.getListKeranjangs();
               Swal.fire({
                 icon: 'success',
                 title: keranjang.product.nama + ' Sukses Masuk Keranjang',
@@ -139,7 +148,10 @@ export default class Home extends React.Component {
 
           <div className="col-span-1 my-4 mx-5 w-full">
             <h1 className="font-bold text-gray-700 mb-5 text-2xl">Keranjang</h1>
-            <Results keranjangs={keranjangs} {...this.props} />
+            <Results
+              keranjangs={keranjangs}
+              getListKeranjangs={this.getListKeranjangs}
+            />
           </div>
         </div>
       </main>
