@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// import React from 'react';
 import axios from 'axios';
 import { numberWithCommas } from '../utils/numberWithCommas';
 import Swal from 'sweetalert2';
