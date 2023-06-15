@@ -21,6 +21,7 @@ const TotalPay = (props) => {
         Swal.fire({
           icon: 'success',
           showConfirmButton: false,
+          timer: 1500,
           title: 'Sukses Memesan',
         });
 
