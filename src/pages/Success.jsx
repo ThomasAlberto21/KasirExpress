@@ -1,8 +1,32 @@
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import successOrderImg from '../assets/success_order.svg';
+import { API_URL } from '../api/api';
 
 export default class Success extends React.Component {
+  componentDidMount() {
+    axios
+      .get(API_URL + 'keranjangs')
+      .then((res) => {
+        const keranjangs = res.data;
+        keranjangs
+          .map(function (item) {
+            return axios
+              .delete(API_URL + 'keranjangs/' + item.id)
+              .then((res) => {
+                console.log(res);
+              });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div className="flex flex-col justify-center items-center h-screen">
