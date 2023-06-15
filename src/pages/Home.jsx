@@ -28,6 +28,10 @@ export default class Home extends React.Component {
         console.log(error);
       });
 
+    this.getListKeranjangs();
+  }
+
+  getListKeranjangs = () => {
     axios
       .get(API_URL + 'keranjangs')
       .then((res) => {
@@ -37,21 +41,7 @@ export default class Home extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-  }
-
-  componentDidUpdate(prevState) {
-    if (this.state.keranjangs !== prevState.keranjangs) {
-      axios
-        .get(API_URL + 'keranjangs')
-        .then((res) => {
-          const keranjangs = res.data;
-          this.setState({ keranjangs });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }
+  };
 
   changeCategory = (value) => {
     this.setState({
@@ -84,6 +74,7 @@ export default class Home extends React.Component {
           axios
             .post(API_URL + 'keranjangs', keranjang)
             .then(() => {
+              this.getListKeranjangs();
               Swal.fire({
                 icon: 'success',
                 title: keranjang.product.nama + ' Sukses Masuk Keranjang',
