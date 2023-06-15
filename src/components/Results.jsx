@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { numberWithCommas } from '../utils/numberWithCommas';
+import TotalPay from './TotalPay';
 
 export default class Results extends React.Component {
   render() {
@@ -9,7 +10,7 @@ export default class Results extends React.Component {
     return (
       <>
         {keranjangs.length !== 0 && (
-          <div className="lg:w-96">
+          <div className="lg:w-96 h-screen">
             {keranjangs.map((menuKeranjang) => (
               <div
                 className="flex mb-6 border-b-2 border-gray-300 p-4"
@@ -34,6 +35,8 @@ export default class Results extends React.Component {
                 </p>
               </div>
             ))}
+
+            <TotalPay keranjangs={keranjangs} />
           </div>
         )}
       </>
