@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import axios from 'axios';
-import { numberWithCommas } from '../utils/numberWithCommas';
 import Swal from 'sweetalert2';
-import { API_URL } from '../api/api';
 import { useNavigate } from 'react-router-dom';
+import { numberWithCommas } from '../utils/numberWithCommas';
+import { API_URL } from '../api/api';
 
 const TotalPay = (props) => {
   const navigate = useNavigate();
