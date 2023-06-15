@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { numberWithCommas } from '../utils/numberWithCommas';
+import Swal from 'sweetalert2';
 import { API_URL } from '../api/api';
 
 export default class TotalPay extends React.Component {
@@ -11,9 +12,12 @@ export default class TotalPay extends React.Component {
       total_bayar: totalBayar,
       menus: this.props.keranjangs,
     };
+
     axios.post(API_URL + 'pesanans', pesanan).then(() => {
-      const navigate = useNavigate();
-      navigate('/success');
+      Swal.fire({
+        icon: 'success',
+        title: ' Sukses Memesan',
+      });
     });
   };
 
@@ -34,7 +38,7 @@ export default class TotalPay extends React.Component {
 
         <button
           className="bg-blue-500 w-full py-3 rounded-md text-white mt-5 font-bold hover:bg-blue-700"
-          onClick={this.submitTotalBayar(totalBayar)}
+          onClick={() => this.submitTotalBayar(totalBayar)}
         >
           Bayar
         </button>

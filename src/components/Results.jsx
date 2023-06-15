@@ -36,7 +36,7 @@ export default class Results extends React.Component {
               </div>
             ))}
 
-            <TotalPay keranjangs={keranjangs} />
+            <TotalPay keranjangs={keranjangs} {...this.props}/>
           </div>
         )}
       </>
