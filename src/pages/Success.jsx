@@ -11,12 +11,9 @@ export default class Success extends React.Component {
       .then((res) => {
         const keranjangs = res.data;
         keranjangs
-          .map(function (item) {
-            return axios
-              .delete(API_URL + 'keranjangs/' + item.id)
-              .then((res) => {
-                console.log(res);
-              });
+          .map(async function (item) {
+            const res = await axios.delete(API_URL + 'keranjangs/' + item.id);
+            console.log(res);
           })
           .catch((error) => {
             console.log(error);
