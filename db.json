@@ -183,6 +183,24 @@
       }
     }
   ],
-  "keranjangs": [],
+  "keranjangs": [
+    {
+      "jumlah": 2,
+      "total_harga": 32000,
+      "product": {
+        "id": 1,
+        "kode": "K-01",
+        "nama": "Sate Ayam",
+        "harga": 16000,
+        "is_ready": true,
+        "gambar": "https://e1.pxfuel.com/desktop-wallpaper/663/61/desktop-wallpaper-sate-ayam-indonesian-food-indonesia-food.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
+        }
+      },
+      "id": 1
+    }
+  ],
   "pesanans": []
 }

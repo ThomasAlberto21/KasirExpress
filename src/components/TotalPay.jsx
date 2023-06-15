@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { numberWithCommas } from '../utils/numberWithCommas';
-import Swal from 'sweetalert2';
 import { API_URL } from '../api/api';
 
 export default class TotalPay extends React.Component {
@@ -14,19 +14,43 @@ export default class TotalPay extends React.Component {
     };
 
     axios.post(API_URL + 'pesanans', pesanan).then(() => {
-      const navigate = useNavigate();
-      navigate('/success');
       Swal.fire({
         icon: 'success',
         showConfirmButton: false,
         title: ' Sukses Memesan',
       });
 
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 1000);
+
+      const navigate = useNavigate();
+      navigate('/success');
     });
   };
+
+  // componentDidMount() {
+  //   axios
+  //     .get(API_URL + 'keranjangs')
+  //     .then((res) => {
+  //       const keranjangs = res.data;
+
+  //       keranjangs.map(async (item) => {
+  //         try {
+  //           const res = await axios.delete(
+  //             API_URL + 'keranjangs/' + item.id,
+  //             item
+  //           );
+  //           return console.log(res);
+  //         } catch (error) {
+  //           return console.log(error);
+  //         }
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   render() {
     const { keranjangs } = this.props;
