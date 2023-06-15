@@ -1,79 +1,58 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+// import React from 'react';
 import axios from 'axios';
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
 import { numberWithCommas } from '../utils/numberWithCommas';
+import Swal from 'sweetalert2';
 import { API_URL } from '../api/api';
+import { useNavigate } from 'react-router-dom';
 
-export default class TotalPay extends React.Component {
-  submitTotalBayar = (totalBayar) => {
+const TotalPay = (props) => {
+  const navigate = useNavigate();
+
+  const submitTotalBayar = (totalBayar) => {
     const pesanan = {
       total_bayar: totalBayar,
-      menus: this.props.keranjangs,
+      menus: props.keranjangs,
     };
 
-    axios.post(API_URL + 'pesanans', pesanan).then(() => {
-      Swal.fire({
-        icon: 'success',
-        showConfirmButton: false,
-        title: ' Sukses Memesan',
+    axios
+      .post(API_URL + 'pesanans', pesanan)
+      .then(() => {
+        Swal.fire({
+          icon: 'success',
+          showConfirmButton: false,
+          title: 'Sukses Memesan',
+        });
+
+        navigate('/success');
+      })
+      .catch((error) => {
+        console.error('Terjadi kesalahan dalam mengirim pesanan:', error);
       });
-
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 1000);
-
-      const navigate = useNavigate();
-      navigate('/success');
-    });
   };
 
-  // componentDidMount() {
-  //   axios
-  //     .get(API_URL + 'keranjangs')
-  //     .then((res) => {
-  //       const keranjangs = res.data;
+  const { keranjangs } = props;
+  const totalBayar = keranjangs.reduce(function (result, item) {
+    return result + item.total_harga;
+  }, 0);
 
-  //       keranjangs.map(async (item) => {
-  //         try {
-  //           const res = await axios.delete(
-  //             API_URL + 'keranjangs/' + item.id,
-  //             item
-  //           );
-  //           return console.log(res);
-  //         } catch (error) {
-  //           return console.log(error);
-  //         }
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
+  return (
+    <>
+      <div className="flex justify-between">
+        <h4 className="text-blue-500 font-bold">Total Bayar :</h4>
+        <p className="ms-auto font-semibold text-gray-700">
+          Rp. {numberWithCommas(totalBayar)}
+        </p>
+      </div>
 
-  render() {
-    const { keranjangs } = this.props;
-    const totalBayar = keranjangs.reduce(function (result, item) {
-      return result + item.total_harga;
-    }, 0);
+      <button
+        className="bg-blue-500 w-full py-3 rounded-md text-white mt-5 font-bold hover:bg-blue-700"
+        onClick={() => submitTotalBayar(totalBayar)}
+      >
+        Bayar
+      </button>
+    </>
+  );
+};
 
-    return (
-      <>
-        <div className="flex justify-between">
-          <h4 className="text-blue-500 font-bold">Total Bayar :</h4>
-          <p className="ms-auto font-semibold text-gray-700">
-            Rp. {numberWithCommas(totalBayar)}
-          </p>
-        </div>
-
-        <button
-          className="bg-blue-500 w-full py-3 rounded-md text-white mt-5 font-bold hover:bg-blue-700"
-          onClick={() => this.submitTotalBayar(totalBayar)}
-        >
-          Bayar
-        </button>
-      </>
-    );
-  }
-}
+export default TotalPay;
