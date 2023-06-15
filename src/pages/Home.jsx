@@ -148,10 +148,7 @@ export default class Home extends React.Component {
 
           <div className="col-span-1 my-4 mx-5 w-full">
             <h1 className="font-bold text-gray-700 mb-5 text-2xl">Keranjang</h1>
-            <Results
-              keranjangs={keranjangs}
-              getListKeranjangs={this.getListKeranjangs}
-            />
+            <Results keranjangs={keranjangs} />
           </div>
         </div>
       </main>
