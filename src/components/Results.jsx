@@ -18,6 +18,8 @@ export default class Results extends React.Component {
     this.setState({
       showModal: true,
       keranjangDetail: menuKeranjang,
+      jumlah: menuKeranjang.jumlah,
+      keterangan: menuKeranjang.keterangan,
     });
   }
 

@@ -2,7 +2,12 @@
 import { BsXLg } from 'react-icons/bs';
 import { numberWithCommas } from '../utils/numberWithCommas';
 
-export const Modal = ({ handleCloseModal, keranjangDetail, keterangan }) => {
+export const Modal = ({
+  handleCloseModal,
+  keranjangDetail,
+  keterangan,
+  jumlah,
+}) => {
   if (keranjangDetail) {
     return (
       <div
@@ -40,15 +45,12 @@ export const Modal = ({ handleCloseModal, keranjangDetail, keterangan }) => {
 
               <form action="" className="p-6 space-y-6">
                 <div className="mb-6">
-                  <p className="text-white font-semibold mb-1">
-                    Jumlah Pesanan : {keranjangDetail.jumlah}
-                  </p>
                   <p className="text-white font-semibold">
                     Total Harga : Rp.{' '}
                     {numberWithCommas(keranjangDetail.total_harga)}
                   </p>
 
-                  <div className="quantity mt-3">
+                  <div className="quantity mt-2">
                     <label
                       htmlFor="quantity"
                       className="text-white font-semibold"
@@ -56,12 +58,14 @@ export const Modal = ({ handleCloseModal, keranjangDetail, keterangan }) => {
                       Jumlah Pesanan :
                     </label>
                     <br />
-                    <button className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold mt-2">
+                    <button className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold mt-2 hover:bg-gray-500 hover:text-white">
                       +
                     </button>
-                    <strong className="mx-3 text-white font-semibold">0</strong>
+                    <strong className="mx-3 text-white font-semibold">
+                      {jumlah}
+                    </strong>
 
-                    <button className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold">
+                    <button className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold hover:bg-gray-500 hover:text-white">
                       -
                     </button>
                   </div>
@@ -81,6 +85,23 @@ export const Modal = ({ handleCloseModal, keranjangDetail, keterangan }) => {
                   value={keterangan}
                 ></textarea>
               </form>
+
+              <div className="flex items-center p-6 space-x-2  rounded-b dark:border-gray-600">
+                <button
+                  data-modal-hide="defaultModal"
+                  type="button"
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                >
+                  Simpan Pesanan
+                </button>
+                <button
+                  data-modal-hide="defaultModal"
+                  type="button"
+                  className="text-white bg-red-500 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
+                >
+                  Hapus Pesanan
+                </button>
+              </div>
             </div>
           </div>
         </div>
