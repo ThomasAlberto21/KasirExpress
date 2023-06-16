@@ -29,9 +29,24 @@ export default class Results extends React.Component {
     });
   }
 
+  tambahPesanan() {
+    this.setState({
+      jumlah: this.state.jumlah + 1,
+    });
+  }
+
+  kurangPesanan() {
+    if (this.state.jumlah !== 1) {
+      this.setState({
+        jumlah: this.state.jumlah - 1,
+      });
+    }
+  }
+
   render() {
     const { keranjangs } = this.props;
     const { showModal, keranjangDetail } = this.state;
+    const { tambahPesanan, kurangPesanan } = this.state;
 
     return (
       <>
@@ -67,6 +82,8 @@ export default class Results extends React.Component {
               <Modal
                 handleCloseModal={() => this.handleCloseModal()}
                 {...this.state}
+                tambahPesanan={tambahPesanan}
+                kurangPesanan={kurangPesanan}
               />
             )}
 

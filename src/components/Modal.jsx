@@ -2,12 +2,18 @@
 import { BsXLg } from 'react-icons/bs';
 import { numberWithCommas } from '../utils/numberWithCommas';
 
-export const Modal = ({
+const Modal = ({
   handleCloseModal,
   keranjangDetail,
   keterangan,
   jumlah,
+  tambahPesanan,
+  kurangPesanan,
 }) => {
+  const handleForm = (e) => {
+    e.preventDefault();
+  };
+
   if (keranjangDetail) {
     return (
       <div
@@ -43,7 +49,7 @@ export const Modal = ({
                 </button>
               </div>
 
-              <form action="" className="p-6 space-y-6">
+              <form className="p-6 space-y-6" onSubmit={handleForm}>
                 <div className="mb-6">
                   <p className="text-white font-semibold">
                     Total Harga : Rp.{' '}
@@ -58,14 +64,20 @@ export const Modal = ({
                       Jumlah Pesanan :
                     </label>
                     <br />
-                    <button className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold mt-2 hover:bg-gray-500 hover:text-white">
+                    <button
+                      className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold mt-2 hover:bg-gray-500 hover:text-white"
+                      onClick={() => tambahPesanan()}
+                    >
                       +
                     </button>
                     <strong className="mx-3 text-white font-semibold">
                       {jumlah}
                     </strong>
 
-                    <button className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold hover:bg-gray-500 hover:text-white">
+                    <button
+                      className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold hover:bg-gray-500 hover:text-white"
+                      onClick={() => kurangPesanan()}
+                    >
                       -
                     </button>
                   </div>
