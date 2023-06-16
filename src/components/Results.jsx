@@ -1,11 +1,35 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { numberWithCommas } from '../utils/numberWithCommas';
+import Modal from './Modal';
 import TotalPay from './TotalPay';
+import { numberWithCommas } from '../utils/numberWithCommas';
 
 export default class Results extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showModal: false,
+      keranjangDetail: null,
+    };
+  }
+
+  handleShowModal(menuKeranjang) {
+    this.setState({
+      showModal: true,
+      keranjangDetail: menuKeranjang,
+    });
+  }
+
+  handleCloseModal() {
+    this.setState({
+      showModal: false,
+    });
+  }
+
   render() {
     const { keranjangs } = this.props;
+    const { showModal, keranjangDetail } = this.state;
 
     return (
       <>
@@ -13,8 +37,9 @@ export default class Results extends React.Component {
           <div className="lg:w-96 h-screen">
             {keranjangs.map((menuKeranjang) => (
               <div
-                className="flex mb-6 border-b-2 border-gray-300 p-4"
                 key={menuKeranjang.id}
+                className="flex mb-6 border-b-2 border-gray-300 p-4 cursor-pointer"
+                onClick={() => this.handleShowModal(menuKeranjang)}
               >
                 {/* Badge */}
                 <div className="bg-blue-600 text-white font-semibold w-6 h-6 inline-flex items-center rounded-full mr-2">
@@ -35,6 +60,10 @@ export default class Results extends React.Component {
                 </p>
               </div>
             ))}
+
+            {showModal && keranjangDetail && (
+              <Modal handleCloseModal={() => this.handleCloseModal()} />
+            )}
 
             <TotalPay keranjangs={keranjangs} />
           </div>
