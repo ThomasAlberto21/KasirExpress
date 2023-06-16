@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import successOrderImg from '../assets/success_order.svg';
+import { Link } from 'react-router-dom';
 import { API_URL } from '../api/api';
 
 export default class Success extends React.Component {
@@ -10,14 +10,10 @@ export default class Success extends React.Component {
       .get(API_URL + 'keranjangs')
       .then((res) => {
         const keranjangs = res.data;
-        keranjangs
-          .map(async function (item) {
-            const res = await axios.delete(API_URL + 'keranjangs/' + item.id);
-            console.log(res);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        keranjangs.map(async function (item) {
+          const res = await axios.delete(API_URL + 'keranjangs/' + item.id);
+          return res;
+        });
       })
       .catch((error) => {
         console.log(error);
