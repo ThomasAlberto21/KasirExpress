@@ -43,10 +43,21 @@ export default class Results extends React.Component {
     }
   };
 
+  changeHandler = (e) => {
+    this.setState({
+      keterangan: e.target.value,
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state.keterangan);
+  };
+
   render() {
     const { keranjangs } = this.props;
     const { showModal, keranjangDetail } = this.state;
-    const { tambahPesanan, kurangPesanan } = this;
+    const { tambahPesanan, kurangPesanan, changeHandler, handleSubmit } = this;
 
     return (
       <>
@@ -84,6 +95,8 @@ export default class Results extends React.Component {
                 {...this.state}
                 tambahPesanan={tambahPesanan}
                 kurangPesanan={kurangPesanan}
+                changeHandler={changeHandler}
+                handleSubmit={handleSubmit}
               />
             )}
 

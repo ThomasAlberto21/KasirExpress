@@ -9,11 +9,9 @@ const Modal = ({
   jumlah,
   tambahPesanan,
   kurangPesanan,
+  handleSubmit,
+  changeHandler,
 }) => {
-  const handleForm = (e) => {
-    e.preventDefault();
-  };
-
   if (keranjangDetail) {
     return (
       <div
@@ -49,71 +47,74 @@ const Modal = ({
                 </button>
               </div>
 
-              <form className="p-6 space-y-6" onSubmit={handleForm}>
-                <div className="mb-6">
-                  <p className="text-white font-semibold">
-                    Total Harga : Rp.{' '}
-                    {numberWithCommas(keranjangDetail.total_harga)}
-                  </p>
+              <div className="mb-6 px-6 pt-6">
+                <p className="text-white font-semibold">
+                  Total Harga : Rp.{' '}
+                  {numberWithCommas(keranjangDetail.total_harga)}
+                </p>
 
-                  <div className="quantity mt-2">
-                    <label
-                      htmlFor="quantity"
-                      className="text-white font-semibold"
-                    >
-                      Jumlah Pesanan :
-                    </label>
-                    <br />
-                    <button
-                      className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold mt-2 hover:bg-gray-500 hover:text-white"
-                      onClick={() => tambahPesanan()}
-                    >
-                      +
-                    </button>
-                    <strong className="mx-3 text-white font-semibold">
-                      {jumlah}
-                    </strong>
+                <div className="quantity mt-2">
+                  <label
+                    htmlFor="quantity"
+                    className="text-white font-semibold"
+                  >
+                    Jumlah Pesanan :
+                  </label>
+                  <br />
+                  <button
+                    className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold mt-2 hover:bg-gray-500 hover:text-white"
+                    onClick={() => tambahPesanan()}
+                  >
+                    +
+                  </button>
+                  <strong className="mx-3 text-white font-semibold">
+                    {jumlah}
+                  </strong>
 
-                    <button
-                      className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold hover:bg-gray-500 hover:text-white"
-                      onClick={() => kurangPesanan()}
-                    >
-                      -
-                    </button>
-                  </div>
+                  <button
+                    className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold hover:bg-gray-500 hover:text-white"
+                    onClick={() => kurangPesanan()}
+                  >
+                    -
+                  </button>
                 </div>
+              </div>
 
+              <form className="p-6 space-y-6" onSubmit={handleSubmit}>
                 <label
                   htmlFor="keterangan"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Keterangan
                 </label>
                 <textarea
                   id="keterangan"
                   rows="6"
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Contoh : Pedas, Nasi Setengah, dll"
                   value={keterangan}
+                  onChange={(e) => changeHandler(e)}
+                  placeholder="Contoh : Pedas, Nasi Setengah, dll"
+                  className="block p-2.5 w-full text-sm text-white bg-gray-700 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                 ></textarea>
-              </form>
 
-              <div className="flex items-center p-6 space-x-2  rounded-b dark:border-gray-600">
-                <button
-                  data-modal-hide="defaultModal"
-                  type="button"
-                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                >
-                  Simpan Pesanan
-                </button>
-                <button
-                  data-modal-hide="defaultModal"
-                  type="button"
-                  className="text-white bg-red-500 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
-                >
-                  Hapus Pesanan
-                </button>
-              </div>
+                {/* Button */}
+                <div className="flex items-center p-6 space-x-2  rounded-b dark:border-gray-600">
+                  <button
+                    data-modal-hide="defaultModal"
+                    type="submit"
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  >
+                    Simpan Pesanan
+                  </button>
+
+                  <button
+                    data-modal-hide="defaultModal"
+                    type="button"
+                    className="text-white bg-red-500 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
+                  >
+                    Hapus Pesanan
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
