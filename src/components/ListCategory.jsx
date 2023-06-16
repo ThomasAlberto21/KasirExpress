@@ -75,10 +75,11 @@ export default class ListCategory extends React.Component {
                 key={category.id}
               >
                 <li
-                  className={
-                    categoriYangDipilih === category.nama &&
-                    'bg-blue-600 text-gray-700 rounded-md '
-                  }
+                  className={`${
+                    categoriYangDipilih === category.nama
+                      ? 'bg-blue-600 text-gray-700 rounded-md '
+                      : ''
+                  }`}
                   onClick={() => changeCategory(category.nama)}
                 >
                   <div className="flex items-center p-3 rounded-md">
