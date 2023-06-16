@@ -3,8 +3,8 @@ import Sidebar from '../components/Sidebar';
 import ProductList from '../components/ProductList';
 import Results from '../components/Results';
 import axios from 'axios';
-import { API_URL } from '../api/api';
 import Swal from 'sweetalert2';
+import { API_URL } from '../api/api';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -148,7 +148,7 @@ export default class Home extends React.Component {
 
           <div className="col-span-1 my-4 mx-5 w-full">
             <h1 className="font-bold text-gray-700 mb-5 text-2xl">Keranjang</h1>
-            <Results keranjangs={keranjangs}/>
+            <Results keranjangs={keranjangs} />
           </div>
         </div>
       </main>
