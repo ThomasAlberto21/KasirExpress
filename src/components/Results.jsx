@@ -62,7 +62,10 @@ export default class Results extends React.Component {
             ))}
 
             {showModal && keranjangDetail && (
-              <Modal handleCloseModal={() => this.handleCloseModal()} />
+              <Modal
+                handleCloseModal={() => this.handleCloseModal()}
+                {...this.state}
+              />
             )}
 
             <TotalPay keranjangs={keranjangs} />
