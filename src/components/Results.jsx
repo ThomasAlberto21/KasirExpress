@@ -14,39 +14,39 @@ export default class Results extends React.Component {
     };
   }
 
-  handleShowModal(menuKeranjang) {
+  handleShowModal = (menuKeranjang) => {
     this.setState({
       showModal: true,
       keranjangDetail: menuKeranjang,
       jumlah: menuKeranjang.jumlah,
       keterangan: menuKeranjang.keterangan,
     });
-  }
+  };
 
-  handleCloseModal() {
+  handleCloseModal = () => {
     this.setState({
       showModal: false,
     });
-  }
+  };
 
-  tambahPesanan() {
+  tambahPesanan = () => {
     this.setState({
       jumlah: this.state.jumlah + 1,
     });
-  }
+  };
 
-  kurangPesanan() {
+  kurangPesanan = () => {
     if (this.state.jumlah !== 1) {
       this.setState({
         jumlah: this.state.jumlah - 1,
       });
     }
-  }
+  };
 
   render() {
     const { keranjangs } = this.props;
     const { showModal, keranjangDetail } = this.state;
-    const { tambahPesanan, kurangPesanan } = this.state;
+    const { tambahPesanan, kurangPesanan } = this;
 
     return (
       <>
