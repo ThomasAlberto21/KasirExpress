@@ -185,15 +185,15 @@
   ],
   "keranjangs": [
     {
-      "jumlah": 1,
-      "total_harga": 14000,
+      "jumlah": 2,
+      "total_harga": 28000,
       "product": {
-        "id": 2,
-        "kode": "K-02",
-        "nama": "Nasi Goreng Telur",
+        "id": 7,
+        "kode": "K-07",
+        "nama": "Mie Ayam Bakso",
         "harga": 14000,
         "is_ready": true,
-        "gambar": "https://s3.ap-southeast-1.amazonaws.com/assets.segari.id/recipes/Nasi+Goreng+Spesial+-+vecteezy.com.jpg",
+        "gambar": "https://www.pegipegi.com/travel/wp-content/uploads/2018/06/shutterstock_1046157670.jpg",
         "category": {
           "id": 1,
           "nama": "Makanan"
@@ -202,5 +202,46 @@
       "id": 1
     }
   ],
-  "pesanans": []
+  "pesanans": [
+    {
+      "total_bayar": 44000,
+      "menus": [
+        {
+          "jumlah": 2,
+          "total_harga": 28000,
+          "product": {
+            "id": 2,
+            "kode": "K-02",
+            "nama": "Nasi Goreng Telur",
+            "harga": 14000,
+            "is_ready": true,
+            "gambar": "https://s3.ap-southeast-1.amazonaws.com/assets.segari.id/recipes/Nasi+Goreng+Spesial+-+vecteezy.com.jpg",
+            "category": {
+              "id": 1,
+              "nama": "Makanan"
+            }
+          },
+          "id": 1
+        },
+        {
+          "jumlah": 1,
+          "total_harga": 16000,
+          "product": {
+            "id": 1,
+            "kode": "K-01",
+            "nama": "Sate Ayam",
+            "harga": 16000,
+            "is_ready": true,
+            "gambar": "https://e1.pxfuel.com/desktop-wallpaper/663/61/desktop-wallpaper-sate-ayam-indonesian-food-indonesia-food.jpg",
+            "category": {
+              "id": 1,
+              "nama": "Makanan"
+            }
+          },
+          "id": 2
+        }
+      ],
+      "id": 1
+    }
+  ]
 }
