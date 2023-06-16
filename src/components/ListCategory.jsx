@@ -2,17 +2,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import axios from 'axios';
-import { API_URL } from '../api/api';
-import { FaUtensils, FaCoffee, FaCheese } from 'react-icons/fa';
 import { BsXLg } from 'react-icons/bs';
+import { FaUtensils, FaCoffee, FaCheese } from 'react-icons/fa';
+import { API_URL } from '../api/api';
 
-const Icon = ({ nama }) => {
+const IconCategory = ({ nama }) => {
   if (nama === 'Makanan')
-    return <FaUtensils Icon={FaUtensils} className="text-white mr-4 text-xl" />;
+    return <FaUtensils className="text-white mr-4 text-xl" />;
   if (nama === 'Minuman')
-    return <FaCoffee Icon={FaCoffee} className="text-white mr-4 text-xl" />;
+    return <FaCoffee className="text-white mr-4 text-xl" />;
   if (nama === 'Cemilan')
-    return <FaCheese Icon={FaCheese} className="text-white mr-4 text-xl" />;
+    return <FaCheese className="text-white mr-4 text-xl" />;
 };
 
 export default class ListCategory extends React.Component {
@@ -83,7 +83,7 @@ export default class ListCategory extends React.Component {
                 >
                   <div className="flex items-center p-3 rounded-md">
                     <span className="ml-3 flex justify-center items-center text-xl text-white">
-                      <Icon nama={category.nama} />
+                      <IconCategory nama={category.nama} />
                       {category.nama}
                     </span>
                   </div>
