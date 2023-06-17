@@ -184,5 +184,29 @@
     }
   ],
   "keranjangs": [],
-  "pesanans": []
+  "pesanans": [
+    {
+      "total_bayar": 10000,
+      "menus": [
+        {
+          "jumlah": 2,
+          "total_harga": 10000,
+          "product": {
+            "id": 8,
+            "kode": "K-08",
+            "nama": "Pangsit 6 pcs",
+            "harga": 5000,
+            "is_ready": true,
+            "gambar": "https://img-global.cpcdn.com/recipes/8f25fc947a4babf3/680x482cq70/pangsit-goreng-foto-resep-utama.jpg",
+            "category": {
+              "id": 3,
+              "nama": "Cemilan"
+            }
+          },
+          "id": 1
+        }
+      ],
+      "id": 1
+    }
+  ]
 }

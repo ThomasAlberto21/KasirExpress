@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
+import axios from 'axios';
 import React from 'react';
+import { API_URL } from '../api/api';
 
 export default class SearchBar extends React.Component {
   constructor(props) {
@@ -10,13 +12,26 @@ export default class SearchBar extends React.Component {
     };
   }
 
-  handleChange = (e) => {
-    this.setState({ search: e.target.value });
+  handleSearchChange = (e) => {
+    const search = e.target.value;
+    this.setState({ search });
+    this.props.handleSearch(search);
+  };
+
+  searchProducts = () => {
+    axios
+      .get(API_URL + 'products?nama=' + this.state.search)
+      .then((res) => {
+        this.props.setAllProducts(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   render() {
     return (
-      <form className="mb-5" onChange={this.handleChange}>
+      <form className="mb-5">
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -46,6 +61,8 @@ export default class SearchBar extends React.Component {
             id="default-search"
             className="block w-full p-3 pl-10 text-sm text-white  rounded-lg bg-gray-700 "
             placeholder="Cari Menu..."
+            value={this.state.search}
+            onChange={this.handleSearchChange}
             required
           />
         </div>

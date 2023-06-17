@@ -15,12 +15,19 @@ export default class Home extends React.Component {
       menus: [],
       categoriYangDipilih: 'Makanan',
       keranjangs: [],
+      search: '',
     };
   }
 
   componentDidMount() {
+    this.fetchProducts();
+    this.getListsKeranjangs();
+  }
+
+  fetchProducts = () => {
+    const { categoriYangDipilih } = this.state;
     axios
-      .get(API_URL + 'products?category.nama=' + this.state.categoriYangDipilih)
+      .get(API_URL + 'products?category.nama=' + categoriYangDipilih)
       .then((res) => {
         const menus = res.data;
         this.setState({ menus });
@@ -28,9 +35,7 @@ export default class Home extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-
-    this.getListsKeranjangs();
-  }
+  };
 
   getListsKeranjangs = () => {
     axios
@@ -45,20 +50,15 @@ export default class Home extends React.Component {
   };
 
   changeCategory = (value) => {
-    this.setState({
-      categoriYangDipilih: value,
-      menus: [],
-    });
-
-    axios
-      .get(API_URL + 'products?category.nama=' + value)
-      .then((res) => {
-        const menus = res.data;
-        this.setState({ menus });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.setState(
+      {
+        categoriYangDipilih: value,
+        menus: [],
+      },
+      () => {
+        this.fetchProducts();
+      }
+    );
   };
 
   addCarts = (value) => {
@@ -113,8 +113,15 @@ export default class Home extends React.Component {
       });
   };
 
+  handleSearch = (search) => {
+    this.setState({ search });
+  };
+
   render() {
-    const { menus, categoriYangDipilih, keranjangs } = this.state;
+    const { menus, categoriYangDipilih, keranjangs, search } = this.state;
+    const filteredProducts = menus.filter((menu) =>
+      menu.nama.toLowerCase().includes(search.toLowerCase())
+    );
 
     return (
       <main className="container w-full">
@@ -130,16 +137,15 @@ export default class Home extends React.Component {
             <h1 className="font-bold text-gray-700 mb-5 text-2xl">
               Daftar Menu
             </h1>
-            <SearchBar />
+            <SearchBar handleSearch={this.handleSearch} />
             <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4">
-              {menus &&
-                menus.map((menu) => (
-                  <ProductList
-                    key={menu.id}
-                    menu={menu}
-                    addCarts={this.addCarts}
-                  />
-                ))}
+              {filteredProducts.map((menu) => (
+                <ProductList
+                  key={menu.id}
+                  menu={menu}
+                  addCarts={this.addCarts}
+                />
+              ))}
             </div>
           </div>
 
