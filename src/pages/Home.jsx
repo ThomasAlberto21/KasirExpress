@@ -86,6 +86,8 @@ export default class Home extends React.Component {
             .then(() => {
               Swal.fire({
                 icon: 'success',
+                timer: 1500,
+                showConfirmButton: false,
                 title: keranjang.product.nama + ' Sukses Masuk Keranjang',
               });
             })
@@ -104,6 +106,8 @@ export default class Home extends React.Component {
             .then(() => {
               Swal.fire({
                 icon: 'success',
+                timer: 1500,
+                showConfirmButton: false,
                 title: keranjang.product.nama + ' Sukses Masuk Keranjang',
               });
             })

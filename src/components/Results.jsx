@@ -76,6 +76,8 @@ export default class Results extends React.Component {
       .then(() => {
         Swal.fire({
           icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
           title: data.product.nama + ' Sukses Diupdate',
         });
       })
