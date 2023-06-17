@@ -10,7 +10,10 @@ export default class Results extends React.Component {
 
     this.state = {
       showModal: false,
-      keranjangDetail: null,
+      keranjangDetail: false,
+      jumlah: 0,
+      keterangan: '',
+      totalHarga: 0,
     };
   }
 
@@ -20,6 +23,7 @@ export default class Results extends React.Component {
       keranjangDetail: menuKeranjang,
       jumlah: menuKeranjang.jumlah,
       keterangan: menuKeranjang.keterangan,
+      totalHarga: menuKeranjang.total_harga,
     });
   };
 
@@ -32,6 +36,8 @@ export default class Results extends React.Component {
   tambahPesanan = () => {
     this.setState({
       jumlah: this.state.jumlah + 1,
+      totalHarga:
+        this.state.keranjangDetail.product.harga * (this.state.jumlah + 1),
     });
   };
 
@@ -39,6 +45,8 @@ export default class Results extends React.Component {
     if (this.state.jumlah !== 1) {
       this.setState({
         jumlah: this.state.jumlah - 1,
+        totalHarga:
+          this.state.keranjangDetail.product.harga * (this.state.jumlah + 1),
       });
     }
   };

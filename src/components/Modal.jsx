@@ -11,6 +11,7 @@ const Modal = ({
   kurangPesanan,
   handleSubmit,
   changeHandler,
+  totalHarga,
 }) => {
   if (keranjangDetail) {
     return (
