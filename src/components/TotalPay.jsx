@@ -18,9 +18,9 @@ const TotalPay = ({ keranjangs }) => {
       .then(() => {
         Swal.fire({
           icon: 'success',
-          showConfirmButton: false,
           timer: 1500,
           title: 'Sukses Memesan',
+          showConfirmButton: false,
         });
 
         navigate('/success');
