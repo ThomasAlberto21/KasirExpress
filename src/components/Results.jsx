@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
 import Modal from './Modal';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import TotalPay from './TotalPay';
+import { useState } from 'react';
 import { numberWithCommas } from '../utils/numberWithCommas';
 import { API_URL } from '../api/api';
 
 const Results = ({ keranjangs, getListsKeranjangs }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [keranjangDetail, setKeranjangDetail] = useState(null);
   const [jumlah, setJumlah] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const [keterangan, setKeterangan] = useState('');
   const [totalHarga, setTotalHarga] = useState(0);
+  const [keranjangDetail, setKeranjangDetail] = useState(false);
 
   const handleShowModal = (menuKeranjang) => {
     setShowModal(true);

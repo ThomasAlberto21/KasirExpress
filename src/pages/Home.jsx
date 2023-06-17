@@ -1,24 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Results from '../components/Results';
 import Sidebar from '../components/Sidebar';
 import SearchBar from '../components/SearchBar';
 import ProductList from '../components/ProductList';
+import { useState, useEffect } from 'react';
 import { API_URL } from '../api/api';
 
 const Home = () => {
   const [menus, setMenus] = useState([]);
-  const [categoriYangDipilih, setCategoriYangDipilih] = useState('Makanan');
-  const [keranjangs, setKeranjangs] = useState([]);
   const [search, setSearch] = useState('');
+  const [keranjangs, setKeranjangs] = useState([]);
+  const [categoriYangDipilih, setCategoriYangDipilih] = useState('Makanan');
 
   useEffect(() => {
     const interval = setInterval(() => {
       fetchProducts();
       getListsKeranjangs();
-    }, 100);
+    }, 50);
 
     return () => {
       clearInterval(interval);
