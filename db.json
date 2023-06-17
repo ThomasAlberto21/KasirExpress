@@ -186,69 +186,11 @@
   "keranjangs": [],
   "pesanans": [
     {
-      "total_bayar": 10000,
+      "total_bayar": 7000,
       "menus": [
-        {
-          "jumlah": 2,
-          "total_harga": 10000,
-          "product": {
-            "id": 8,
-            "kode": "K-08",
-            "nama": "Pangsit 6 pcs",
-            "harga": 5000,
-            "is_ready": true,
-            "gambar": "https://img-global.cpcdn.com/recipes/8f25fc947a4babf3/680x482cq70/pangsit-goreng-foto-resep-utama.jpg",
-            "category": {
-              "id": 3,
-              "nama": "Cemilan"
-            }
-          },
-          "id": 1
-        }
-      ],
-      "id": 1
-    },
-    {
-      "total_bayar": 77000,
-      "menus": [
-        {
-          "jumlah": 3,
-          "total_harga": 48000,
-          "product": {
-            "id": 1,
-            "kode": "K-01",
-            "nama": "Sate Ayam",
-            "harga": 16000,
-            "is_ready": true,
-            "gambar": "https://e1.pxfuel.com/desktop-wallpaper/663/61/desktop-wallpaper-sate-ayam-indonesian-food-indonesia-food.jpg",
-            "category": {
-              "id": 1,
-              "nama": "Makanan"
-            }
-          },
-          "keterangan": "Pedas",
-          "id": 1
-        },
         {
           "jumlah": 1,
-          "total_harga": 15000,
-          "product": {
-            "id": 11,
-            "kode": "K-011",
-            "nama": "Coffe Late",
-            "harga": 15000,
-            "is_ready": true,
-            "gambar": "https://e1.pxfuel.com/desktop-wallpaper/396/611/desktop-wallpaper-latte-coffee-art.jpg",
-            "category": {
-              "id": 2,
-              "nama": "Minuman"
-            }
-          },
-          "id": 2
-        },
-        {
-          "jumlah": 2,
-          "total_harga": 14000,
+          "total_harga": 7000,
           "product": {
             "id": 12,
             "kode": "K-012",
@@ -261,10 +203,10 @@
               "nama": "Minuman"
             }
           },
-          "id": 3
+          "id": 1
         }
       ],
-      "id": 2
+      "id": 1
     }
   ]
 }

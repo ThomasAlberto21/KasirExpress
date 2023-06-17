@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Results from '../components/Results';
@@ -7,61 +8,53 @@ import SearchBar from '../components/SearchBar';
 import ProductList from '../components/ProductList';
 import { API_URL } from '../api/api';
 
-export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
+const Home = () => {
+  const [menus, setMenus] = useState([]);
+  const [categoriYangDipilih, setCategoriYangDipilih] = useState('Makanan');
+  const [keranjangs, setKeranjangs] = useState([]);
+  const [search, setSearch] = useState('');
 
-    this.state = {
-      menus: [],
-      categoriYangDipilih: 'Makanan',
-      keranjangs: [],
-      search: '',
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchProducts();
+      getListsKeranjangs();
+    }, 100);
+
+    return () => {
+      clearInterval(interval);
     };
-  }
+  }, [categoriYangDipilih, keranjangs]);
 
-  componentDidMount() {
-    this.fetchProducts();
-    this.getListsKeranjangs();
-  }
-
-  fetchProducts = () => {
-    const { categoriYangDipilih } = this.state;
+  const fetchProducts = () => {
     axios
       .get(API_URL + 'products?category.nama=' + categoriYangDipilih)
       .then((res) => {
         const menus = res.data;
-        this.setState({ menus });
+        setMenus(menus);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  getListsKeranjangs = () => {
+  const getListsKeranjangs = () => {
     axios
       .get(API_URL + 'keranjangs')
       .then((res) => {
         const keranjangs = res.data;
-        this.setState({ keranjangs });
+        setKeranjangs(keranjangs);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  changeCategory = (value) => {
-    this.setState(
-      {
-        categoriYangDipilih: value,
-        menus: [],
-      },
-      () => {
-        this.fetchProducts();
-      }
-    );
+  const changeCategory = (value) => {
+    setCategoriYangDipilih(value);
+    setMenus([]);
   };
 
-  addCarts = (value) => {
+  const addCarts = (value) => {
     axios
       .get(API_URL + 'keranjangs?product.id=' + value.id)
       .then((res) => {
@@ -75,7 +68,7 @@ export default class Home extends React.Component {
           axios
             .post(API_URL + 'keranjangs', keranjang)
             .then(() => {
-              this.getListsKeranjangs();
+              getListsKeranjangs();
               Swal.fire({
                 icon: 'success',
                 timer: 1500,
@@ -113,51 +106,44 @@ export default class Home extends React.Component {
       });
   };
 
-  handleSearch = (search) => {
-    this.setState({ search });
+  const handleSearch = (search) => {
+    setSearch(search);
   };
 
-  render() {
-    const { menus, categoriYangDipilih, keranjangs, search } = this.state;
-    const filteredProducts = menus.filter((menu) =>
-      menu.nama.toLowerCase().includes(search.toLowerCase())
-    );
+  const filteredProducts = menus.filter((menu) =>
+    menu.nama.toLowerCase().includes(search.toLowerCase())
+  );
 
-    return (
-      <main className="container w-full">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-6 md:grid-cols-1 lg:ml-0 md:ml-80">
-          <div className="col-span-1">
-            <Sidebar
-              changeCategory={this.changeCategory}
-              categoriYangDipilih={categoriYangDipilih}
-            />
-          </div>
+  return (
+    <main className="container w-full">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-6 md:grid-cols-1 lg:ml-0 md:ml-80">
+        <div className="col-span-1">
+          <Sidebar
+            changeCategory={changeCategory}
+            categoriYangDipilih={categoriYangDipilih}
+          />
+        </div>
 
-          <div className="col-span-3 mx-3 lg:my-4 md:mb-5 lg:mx-5 ">
-            <h1 className="mb-5 text-2xl font-bold text-gray-700">
-              Daftar Menu
-            </h1>
-            <SearchBar handleSearch={this.handleSearch} />
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-1">
-              {filteredProducts.map((menu) => (
-                <ProductList
-                  key={menu.id}
-                  menu={menu}
-                  addCarts={this.addCarts}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="w-full col-span-1 mx-5 my-4">
-            <h1 className="mb-5 text-2xl font-bold text-gray-700">Keranjang</h1>
-            <Results
-              keranjangs={keranjangs}
-              getListsKeranjangs={this.getListsKeranjangs}
-            />
+        <div className="col-span-3 mx-3 lg:my-4 md:mb-5 lg:mx-5 ">
+          <h1 className="mb-5 text-2xl font-bold text-gray-700">Daftar Menu</h1>
+          <SearchBar handleSearch={handleSearch} />
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-1">
+            {filteredProducts.map((menu) => (
+              <ProductList key={menu.id} menu={menu} addCarts={addCarts} />
+            ))}
           </div>
         </div>
-      </main>
-    );
-  }
-}
+
+        <div className="w-full col-span-1 mx-5 my-4">
+          <h1 className="mb-5 text-2xl font-bold text-gray-700">Keranjang</h1>
+          <Results
+            keranjangs={keranjangs}
+            getListsKeranjangs={getListsKeranjangs}
+          />
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default Home;

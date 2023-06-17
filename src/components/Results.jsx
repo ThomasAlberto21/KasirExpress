@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import { useState } from 'react';
 import Modal from './Modal';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -7,74 +7,56 @@ import TotalPay from './TotalPay';
 import { numberWithCommas } from '../utils/numberWithCommas';
 import { API_URL } from '../api/api';
 
-export default class Results extends React.Component {
-  constructor(props) {
-    super(props);
+const Results = ({ keranjangs, getListsKeranjangs }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [keranjangDetail, setKeranjangDetail] = useState(null);
+  const [jumlah, setJumlah] = useState(0);
+  const [keterangan, setKeterangan] = useState('');
+  const [totalHarga, setTotalHarga] = useState(0);
 
-    this.state = {
-      showModal: false,
-      keranjangDetail: false,
-      jumlah: 0,
-      keterangan: '',
-      totalHarga: 0,
-    };
-  }
-
-  handleShowModal = (menuKeranjang) => {
-    this.setState({
-      showModal: true,
-      keranjangDetail: menuKeranjang,
-      jumlah: menuKeranjang.jumlah,
-      keterangan: menuKeranjang.keterangan,
-      totalHarga: menuKeranjang.total_harga,
-    });
+  const handleShowModal = (menuKeranjang) => {
+    setShowModal(true);
+    setKeranjangDetail(menuKeranjang);
+    setJumlah(menuKeranjang.jumlah);
+    setKeterangan(menuKeranjang.keterangan);
+    setTotalHarga(menuKeranjang.total_harga);
   };
 
-  handleCloseModal = () => {
-    this.setState({
-      showModal: false,
-    });
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
-  tambahPesanan = () => {
-    this.setState({
-      jumlah: this.state.jumlah + 1,
-      totalHarga:
-        this.state.keranjangDetail.product.harga * (this.state.jumlah + 1),
-    });
+  const tambahPesanan = () => {
+    setJumlah((prevJumlah) => prevJumlah + 1);
+    setTotalHarga(keranjangDetail.product.harga * (jumlah + 1));
   };
 
-  kurangPesanan = () => {
-    if (this.state.jumlah !== 1) {
-      this.setState({
-        jumlah: this.state.jumlah - 1,
-        totalHarga:
-          this.state.keranjangDetail.product.harga * (this.state.jumlah - 1),
-      });
+  const kurangPesanan = () => {
+    if (jumlah !== 1) {
+      setJumlah((prevJumlah) => prevJumlah - 1);
+      setTotalHarga(keranjangDetail.product.harga * (jumlah - 1));
     }
   };
 
-  changeHandler = (e) => {
-    this.setState({
-      keterangan: e.target.value,
-    });
+  const changeHandler = (e) => {
+    setKeterangan(e.target.value);
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.handleCloseModal();
+    handleCloseModal();
 
     const data = {
-      jumlah: this.state.jumlah,
-      total_harga: this.state.totalHarga,
-      product: this.state.keranjangDetail.product,
-      keterangan: this.state.keterangan,
+      jumlah,
+      total_harga: totalHarga,
+      product: keranjangDetail.product,
+      keterangan,
     };
 
     axios
-      .put(API_URL + 'keranjangs/' + this.state.keranjangDetail.id, data)
+      .put(API_URL + 'keranjangs/' + keranjangDetail.id, data)
       .then(() => {
-        this.props.getListsKeranjangs();
+        getListsKeranjangs();
         Swal.fire({
           icon: 'success',
           timer: 1500,
@@ -87,18 +69,18 @@ export default class Results extends React.Component {
       });
   };
 
-  hapusPesanan = (id) => {
-    this.handleCloseModal();
+  const hapusPesanan = (id) => {
+    handleCloseModal();
 
     axios
       .delete(API_URL + 'keranjangs/' + id)
       .then(() => {
-        this.props.getListsKeranjangs();
+        getListsKeranjangs();
         Swal.fire({
           icon: 'error',
           timer: 1500,
           showConfirmButton: false,
-          title: this.state.keranjangDetail.product.nama + ' Sukses Dihapus',
+          title: keranjangDetail.product.nama + ' Sukses Dihapus',
         });
       })
       .catch((error) => {
@@ -106,63 +88,57 @@ export default class Results extends React.Component {
       });
   };
 
-  render() {
-    const { keranjangs } = this.props;
-    const { showModal, keranjangDetail } = this.state;
-    const {
-      tambahPesanan,
-      kurangPesanan,
-      changeHandler,
-      handleSubmit,
-      hapusPesanan,
-    } = this;
+  return (
+    <>
+      {keranjangs.length !== 0 && (
+        <div className="h-screen lg:w-96">
+          {keranjangs.map((menuKeranjang) => (
+            <div
+              key={menuKeranjang.id}
+              className="flex p-4 mb-6 border-b-2 border-gray-300 cursor-pointer"
+              onClick={() => handleShowModal(menuKeranjang)}
+            >
+              {/* Badge */}
+              <div className="inline-flex items-center w-6 h-6 mr-2 font-semibold text-white bg-blue-600 rounded-full">
+                <p className="mx-auto text-white">{menuKeranjang.jumlah}</p>
+              </div>
 
-    return (
-      <>
-        {keranjangs.length !== 0 && (
-          <div className="h-screen lg:w-96">
-            {keranjangs.map((menuKeranjang) => (
-              <div
-                key={menuKeranjang.id}
-                className="flex p-4 mb-6 border-b-2 border-gray-300 cursor-pointer"
-                onClick={() => this.handleShowModal(menuKeranjang)}
-              >
-                {/* Badge */}
-                <div className="inline-flex items-center w-6 h-6 mr-2 font-semibold text-white bg-blue-600 rounded-full">
-                  <p className="mx-auto text-white">{menuKeranjang.jumlah}</p>
-                </div>
-
-                {/* Deskripsi */}
-                <div className="text-black ms-3">
-                  <h1 className="font-normal">{menuKeranjang.product.nama}</h1>
-                  <p className="font-normal">
-                    Rp. {numberWithCommas(menuKeranjang.product.harga)}
-                  </p>
-                </div>
-
-                {/* Total Harga */}
-                <p className="font-semibold text-gray-700 ms-auto">
-                  Rp. {numberWithCommas(menuKeranjang.total_harga)}
+              {/* Deskripsi */}
+              <div className="text-black ms-3">
+                <h1 className="font-normal">{menuKeranjang.product.nama}</h1>
+                <p className="font-normal">
+                  Rp. {numberWithCommas(menuKeranjang.product.harga)}
                 </p>
               </div>
-            ))}
 
-            {showModal && keranjangDetail && (
-              <Modal
-                {...this.state}
-                handleCloseModal={() => this.handleCloseModal()}
-                tambahPesanan={tambahPesanan}
-                kurangPesanan={kurangPesanan}
-                changeHandler={changeHandler}
-                handleSubmit={handleSubmit}
-                hapusPesanan={hapusPesanan}
-              />
-            )}
+              {/* Total Harga */}
+              <p className="font-semibold text-gray-700 ms-auto">
+                Rp. {numberWithCommas(menuKeranjang.total_harga)}
+              </p>
+            </div>
+          ))}
 
-            <TotalPay keranjangs={keranjangs} />
-          </div>
-        )}
-      </>
-    );
-  }
-}
+          {showModal && keranjangDetail && (
+            <Modal
+              showModal={showModal}
+              keranjangDetail={keranjangDetail}
+              jumlah={jumlah}
+              keterangan={keterangan}
+              totalHarga={totalHarga}
+              handleCloseModal={handleCloseModal}
+              tambahPesanan={tambahPesanan}
+              kurangPesanan={kurangPesanan}
+              changeHandler={changeHandler}
+              handleSubmit={handleSubmit}
+              hapusPesanan={hapusPesanan}
+            />
+          )}
+
+          <TotalPay keranjangs={keranjangs} />
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Results;

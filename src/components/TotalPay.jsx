@@ -7,7 +7,6 @@ import { API_URL } from '../api/api';
 
 const TotalPay = (props) => {
   const navigate = useNavigate();
-
   const submitTotalBayar = (totalBayar) => {
     const pesanan = {
       total_bayar: totalBayar,
