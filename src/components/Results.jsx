@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Modal from './Modal';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 import TotalPay from './TotalPay';
 import { numberWithCommas } from '../utils/numberWithCommas';
+import { API_URL } from '../api/api';
 
 export default class Results extends React.Component {
   constructor(props) {
@@ -59,6 +62,26 @@ export default class Results extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.handleCloseModal();
+
+    const data = {
+      jumlah: this.state.jumlah,
+      total_harga: this.state.totalHarga,
+      product: this.state.keranjangDetail.product,
+      keterangan: this.state.keterangan,
+    };
+
+    axios
+      .put(API_URL + 'keranjangs/' + this.state.keranjangDetail.id, data)
+      .then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: data.product.nama + ' Sukses Diupdate',
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   render() {

@@ -61,21 +61,21 @@ const Modal = ({
                     Jumlah Pesanan :
                   </label>
                   <br />
-                  <button
-                    className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold mt-2 hover:bg-gray-500 hover:text-white"
-                    onClick={() => tambahPesanan()}
-                  >
-                    +
-                  </button>
-                  <strong className="mx-3 text-white font-semibold">
-                    {jumlah}
-                  </strong>
 
                   <button
                     className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold hover:bg-gray-500 hover:text-white"
                     onClick={() => kurangPesanan()}
                   >
                     -
+                  </button>
+                  <strong className="mx-3 text-white font-semibold">
+                    {jumlah}
+                  </strong>
+                  <button
+                    className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold mt-2 hover:bg-gray-500 hover:text-white"
+                    onClick={() => tambahPesanan()}
+                  >
+                    +
                   </button>
                 </div>
               </div>
@@ -97,7 +97,7 @@ const Modal = ({
                 ></textarea>
 
                 {/* Button */}
-                <div className="flex items-center p-6 space-x-2  rounded-b dark:border-gray-600">
+                <div className="flex items-center  space-x-2  rounded-b dark:border-gray-600">
                   <button
                     data-modal-hide="defaultModal"
                     type="submit"
