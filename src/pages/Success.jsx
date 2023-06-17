@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
 import axios from 'axios';
 import successOrderImg from '../assets/success_order.svg';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../api/api';
 
