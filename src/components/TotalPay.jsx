@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { numberWithCommas } from '../utils/numberWithCommas';
 import { API_URL } from '../api/api';
 
-const TotalPay = (props) => {
+const TotalPay = ({ keranjangs }) => {
   const navigate = useNavigate();
   const submitTotalBayar = (totalBayar) => {
     const pesanan = {
       total_bayar: totalBayar,
-      menus: props.keranjangs,
+      menus: keranjangs,
     };
 
     axios
@@ -30,7 +30,6 @@ const TotalPay = (props) => {
       });
   };
 
-  const { keranjangs } = props;
   const totalBayar = keranjangs.reduce(function (result, item) {
     return result + item.total_harga;
   }, 0);

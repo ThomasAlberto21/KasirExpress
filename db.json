@@ -230,6 +230,29 @@
         }
       ],
       "id": 2
+    },
+    {
+      "total_bayar": 5000,
+      "menus": [
+        {
+          "jumlah": 1,
+          "total_harga": 5000,
+          "product": {
+            "id": 9,
+            "kode": "K-09",
+            "nama": "Kentang Goreng",
+            "harga": 5000,
+            "is_ready": true,
+            "gambar": "https://asset.kompas.com/crops/2n5YA32FK8u-lhUSE-pEXRatRBc=/0x0:1000x667/750x500/data/photo/2019/12/09/5dee4f6a9e1dd.jpg",
+            "category": {
+              "id": 3,
+              "nama": "Cemilan"
+            }
+          },
+          "id": 1
+        }
+      ],
+      "id": 3
     }
   ]
 }
