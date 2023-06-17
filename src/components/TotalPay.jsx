@@ -35,7 +35,7 @@ const TotalPay = ({ keranjangs }) => {
   }, 0);
 
   return (
-    <>
+    <main>
       <div className="flex justify-between">
         <h4 className="font-bold text-blue-500">Total Bayar :</h4>
         <p className="font-semibold text-gray-700 ms-auto">
@@ -49,7 +49,7 @@ const TotalPay = ({ keranjangs }) => {
       >
         Bayar
       </button>
-    </>
+    </main>
   );
 };
 
