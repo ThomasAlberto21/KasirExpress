@@ -12,6 +12,7 @@ const Modal = ({
   handleSubmit,
   changeHandler,
   totalHarga,
+  hapusPesanan,
 }) => {
   if (keranjangDetail) {
     return (
@@ -108,8 +109,8 @@ const Modal = ({
 
                   <button
                     data-modal-hide="defaultModal"
-                    type="button"
                     className="text-white bg-red-500 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
+                    onClick={() => hapusPesanan(keranjangDetail.id)}
                   >
                     Hapus Pesanan
                   </button>

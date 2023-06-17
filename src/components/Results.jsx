@@ -86,10 +86,34 @@ export default class Results extends React.Component {
       });
   };
 
+  hapusPesanan = (id) => {
+    this.handleCloseModal();
+
+    axios
+      .delete(API_URL + 'keranjangs/' + id)
+      .then(() => {
+        Swal.fire({
+          icon: 'error',
+          timer: 1500,
+          showConfirmButton: false,
+          title: this.state.keranjangDetail.product.nama + ' Sukses Dihapus',
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   render() {
     const { keranjangs } = this.props;
     const { showModal, keranjangDetail } = this.state;
-    const { tambahPesanan, kurangPesanan, changeHandler, handleSubmit } = this;
+    const {
+      tambahPesanan,
+      kurangPesanan,
+      changeHandler,
+      handleSubmit,
+      hapusPesanan,
+    } = this;
 
     return (
       <>
@@ -129,6 +153,7 @@ export default class Results extends React.Component {
                 kurangPesanan={kurangPesanan}
                 changeHandler={changeHandler}
                 handleSubmit={handleSubmit}
+                hapusPesanan={hapusPesanan}
               />
             )}
 
