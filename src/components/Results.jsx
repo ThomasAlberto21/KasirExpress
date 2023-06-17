@@ -149,8 +149,8 @@ export default class Results extends React.Component {
 
             {showModal && keranjangDetail && (
               <Modal
-                handleCloseModal={() => this.handleCloseModal()}
                 {...this.state}
+                handleCloseModal={() => this.handleCloseModal()}
                 tambahPesanan={tambahPesanan}
                 kurangPesanan={kurangPesanan}
                 changeHandler={changeHandler}
