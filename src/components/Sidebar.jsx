@@ -4,8 +4,7 @@ import ListCategory from './ListCategory';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-const Sidebar = (props) => {
-  const { changeCategory, categoriYangDipilih } = props;
+const Sidebar = ({ changeCategory, categoriYangDipilih }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
