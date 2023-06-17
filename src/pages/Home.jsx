@@ -1,9 +1,10 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar';
-import ProductList from '../components/ProductList';
-import Results from '../components/Results';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import SearchBar from '../components/SearchBar';
+import Results from '../components/Results';
+import Sidebar from '../components/Sidebar';
+import ProductList from '../components/ProductList';
 import { API_URL } from '../api/api';
 
 export default class Home extends React.Component {
@@ -30,20 +31,6 @@ export default class Home extends React.Component {
 
     this.getListsKeranjangs();
   }
-
-  // componentDidUpdate(prevState) {
-  //   if (this.state.keranjangs !== prevState.keranjangs) {
-  //     axios
-  //       .get(API_URL + 'keranjangs')
-  //       .then((res) => {
-  //         const keranjangs = res.data;
-  //         this.setState({ keranjangs });
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }
 
   getListsKeranjangs = () => {
     axios
@@ -143,6 +130,7 @@ export default class Home extends React.Component {
             <h1 className="font-bold text-gray-700 mb-5 text-2xl">
               Daftar Menu
             </h1>
+            <SearchBar />
             <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4">
               {menus &&
                 menus.map((menu) => (
@@ -157,7 +145,10 @@ export default class Home extends React.Component {
 
           <div className="col-span-1 my-4 mx-5 w-full">
             <h1 className="font-bold text-gray-700 mb-5 text-2xl">Keranjang</h1>
-            <Results keranjangs={keranjangs} getListsKeranjangs={this.getListsKeranjangs}/>
+            <Results
+              keranjangs={keranjangs}
+              getListsKeranjangs={this.getListsKeranjangs}
+            />
           </div>
         </div>
       </main>
