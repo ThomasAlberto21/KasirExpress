@@ -59,7 +59,7 @@ export default class SearchBar extends React.Component {
           <input
             type="search"
             id="default-search"
-            className="block w-full p-3 pl-10 text-sm text-white  rounded-lg bg-gray-700 "
+            className="block w-full p-3 pl-10 text-sm text-white bg-gray-700 rounded-lg "
             placeholder="Cari Menu..."
             value={this.state.search}
             onChange={this.handleSearchChange}

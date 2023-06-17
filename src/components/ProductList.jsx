@@ -3,16 +3,16 @@ import { numberWithCommas } from '../utils/numberWithCommas';
 
 const ProductList = ({ menu, addCarts }) => {
   return (
-    <div className="max-w-lg rounded-lg shadow bg-gray-800  ">
+    <div className="max-w-lg bg-gray-800 rounded-lg shadow ">
       <a href="#">
         <img
-          className="rounded-t-lg w-full h-52"
+          className="w-full rounded-t-lg h-52"
           src={menu.gambar}
           alt="Gambar Menu"
         />
       </a>
       <div className="px-5 py-3">
-        <p className="text-white opacity-50 my-3 italic">
+        <p className="my-3 italic text-white opacity-50">
           --{menu.category.nama}
         </p>
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -24,7 +24,7 @@ const ProductList = ({ menu, addCarts }) => {
         </p>
 
         <button
-          className="w-full px-5 py-3 text-sm font-semibold text-center text-white bg-blue-600 rounded-md mt-5 mb-2 hover:bg-blue-700"
+          className="w-full px-5 py-3 mt-5 mb-2 text-sm font-semibold text-center text-white bg-blue-600 rounded-md hover:bg-blue-700"
           onClick={() => addCarts(menu)}
         >
           Tambah Ke Keranjang

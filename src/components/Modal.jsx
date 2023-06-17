@@ -20,20 +20,20 @@ const Modal = ({
         id="defaultModal"
         tabIndex="-1"
         aria-hidden="true"
-        className="fixed top-0 left-0 right-0 z-50 w-full h-screen flex justify-center items-center bg-black bg-opacity-50"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-screen bg-black bg-opacity-50"
       >
         <div
           id="defaultModal"
           tabIndex="-1"
           aria-hidden="true"
-          className="fixed top-0 left-0 right-0 z-50 w-full h-screen flex justify-center items-center bg-black bg-opacity-50"
+          className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-screen bg-black bg-opacity-50"
         >
           <div className="relative w-full max-w-2xl max-h-full">
-            <div className="relative rounded-lg shadow bg-gray-800">
-              <div className="flex items-start justify-between border-b rounded-t dark:border-gray-600 p-6">
+            <div className="relative bg-gray-800 rounded-lg shadow">
+              <div className="flex items-start justify-between p-6 border-b rounded-t dark:border-gray-600">
                 <h1 className="text-2xl font-semibold text-gray-900 dark:text-white ">
                   {keranjangDetail.product.nama}
-                  <p className="font-semibold text-blue-400 text-lg mt-1">
+                  <p className="mt-1 text-lg font-semibold text-blue-400">
                     (Rp. {numberWithCommas(keranjangDetail.product.harga)})
                   </p>
                 </h1>
@@ -43,37 +43,37 @@ const Modal = ({
                   data-drawer-target="default-sidebar"
                   data-drawer-toggle="default-sidebar"
                   aria-controls="default-sidebar"
-                  className="text-gray-700 bg-white hover:bg-gray-200 hover:text-gray-900 rounded-md text-sm p-3 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="inline-flex items-center p-3 ml-auto text-sm text-gray-700 bg-white rounded-md hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   <BsXLg />
                 </button>
               </div>
 
-              <div className="mb-6 px-6 pt-6">
-                <p className="text-white font-semibold">
+              <div className="px-6 pt-6 mb-6">
+                <p className="font-semibold text-white">
                   Total Harga : Rp. {numberWithCommas(totalHarga)}
                 </p>
 
-                <div className="quantity mt-2">
+                <div className="mt-2 quantity">
                   <label
                     htmlFor="quantity"
-                    className="text-white font-semibold"
+                    className="font-semibold text-white"
                   >
                     Jumlah Pesanan :
                   </label>
                   <br />
 
                   <button
-                    className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold hover:bg-gray-500 hover:text-white"
+                    className="px-3 py-1 font-bold text-gray-700 bg-white rounded-md hover:bg-gray-500 hover:text-white"
                     onClick={() => kurangPesanan()}
                   >
                     -
                   </button>
-                  <strong className="mx-3 text-white font-semibold">
+                  <strong className="mx-3 font-semibold text-white">
                     {jumlah}
                   </strong>
                   <button
-                    className="py-1 px-3 bg-white text-gray-700 rounded-md font-bold mt-2 hover:bg-gray-500 hover:text-white"
+                    className="px-3 py-1 mt-2 font-bold text-gray-700 bg-white rounded-md hover:bg-gray-500 hover:text-white"
                     onClick={() => tambahPesanan()}
                   >
                     +
@@ -98,7 +98,7 @@ const Modal = ({
                 ></textarea>
 
                 {/* Button */}
-                <div className="flex items-center  space-x-2  rounded-b dark:border-gray-600">
+                <div className="flex items-center space-x-2 rounded-b dark:border-gray-600">
                   <button
                     data-modal-hide="defaultModal"
                     type="submit"
@@ -127,16 +127,16 @@ const Modal = ({
         id="defaultModal"
         tabIndex="-1"
         aria-hidden="true"
-        className="fixed top-0 left-0 right-0 z-50 w-full h-screen flex justify-center items-center bg-black bg-opacity-50"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-screen bg-black bg-opacity-50"
       >
         <div
           id="defaultModal"
           tabIndex="-1"
           aria-hidden="true"
-          className="fixed top-0 left-0 right-0 z-50 w-full h-screen flex justify-center items-center bg-black bg-opacity-50"
+          className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-screen bg-black bg-opacity-50"
         >
           <div className="relative w-full max-w-2xl max-h-full">
-            <div className="relative rounded-lg shadow bg-gray-800">
+            <div className="relative bg-gray-800 rounded-lg shadow">
               <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                   Kosong
@@ -147,7 +147,7 @@ const Modal = ({
                   data-drawer-target="default-sidebar"
                   data-drawer-toggle="default-sidebar"
                   aria-controls="default-sidebar"
-                  className="text-gray-700 bg-white hover:bg-gray-200 hover:text-gray-900 rounded-md text-sm p-3 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="inline-flex items-center p-3 ml-auto text-sm text-gray-700 bg-white rounded-md hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   <BsXLg />
                 </button>

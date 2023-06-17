@@ -1,9 +1,9 @@
 import React from 'react';
-import axios from 'axios';
 import Swal from 'sweetalert2';
-import SearchBar from '../components/SearchBar';
+import axios from 'axios';
 import Results from '../components/Results';
 import Sidebar from '../components/Sidebar';
+import SearchBar from '../components/SearchBar';
 import ProductList from '../components/ProductList';
 import { API_URL } from '../api/api';
 
@@ -125,7 +125,7 @@ export default class Home extends React.Component {
 
     return (
       <main className="container w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-1 gap-4 lg:ml-0 md:ml-80">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-6 md:grid-cols-1 lg:ml-0 md:ml-80">
           <div className="col-span-1">
             <Sidebar
               changeCategory={this.changeCategory}
@@ -133,12 +133,12 @@ export default class Home extends React.Component {
             />
           </div>
 
-          <div className="col-span-3 lg:my-4 md:mb-5 lg:mx-5 mx-3 ">
-            <h1 className="font-bold text-gray-700 mb-5 text-2xl">
+          <div className="col-span-3 mx-3 lg:my-4 md:mb-5 lg:mx-5 ">
+            <h1 className="mb-5 text-2xl font-bold text-gray-700">
               Daftar Menu
             </h1>
             <SearchBar handleSearch={this.handleSearch} />
-            <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-1">
               {filteredProducts.map((menu) => (
                 <ProductList
                   key={menu.id}
@@ -149,8 +149,8 @@ export default class Home extends React.Component {
             </div>
           </div>
 
-          <div className="col-span-1 my-4 mx-5 w-full">
-            <h1 className="font-bold text-gray-700 mb-5 text-2xl">Keranjang</h1>
+          <div className="w-full col-span-1 mx-5 my-4">
+            <h1 className="mb-5 text-2xl font-bold text-gray-700">Keranjang</h1>
             <Results
               keranjangs={keranjangs}
               getListsKeranjangs={this.getListsKeranjangs}

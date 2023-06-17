@@ -19,9 +19,9 @@ const Sidebar = (props) => {
         data-drawer-target="default-sidebar"
         data-drawer-toggle="default-sidebar"
         aria-controls="default-sidebar"
-        className="inline-flex items-center p-3 mt-2 ml-3 rounded-md sm:hidden bg-gray-700 hover:opacity-80"
+        className="inline-flex items-center p-3 mt-2 ml-3 bg-gray-700 rounded-md sm:hidden hover:opacity-80"
       >
-        <GiHamburgerMenu className="text-white text-2xl" />
+        <GiHamburgerMenu className="text-2xl text-white" />
       </button>
 
       <ListCategory

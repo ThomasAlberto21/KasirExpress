@@ -39,14 +39,14 @@ const TotalPay = (props) => {
   return (
     <>
       <div className="flex justify-between">
-        <h4 className="text-blue-500 font-bold">Total Bayar :</h4>
-        <p className="ms-auto font-semibold text-gray-700">
+        <h4 className="font-bold text-blue-500">Total Bayar :</h4>
+        <p className="font-semibold text-gray-700 ms-auto">
           Rp. {numberWithCommas(totalBayar)}
         </p>
       </div>
 
       <button
-        className="bg-blue-500 w-full py-3 rounded-md text-white mt-5 font-bold hover:bg-blue-700"
+        className="w-full py-3 mt-5 font-bold text-white bg-blue-500 rounded-md hover:bg-blue-700"
         onClick={() => submitTotalBayar(totalBayar)}
       >
         Bayar

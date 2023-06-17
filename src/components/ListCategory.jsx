@@ -8,11 +8,11 @@ import { API_URL } from '../api/api';
 
 const IconCategory = ({ nama }) => {
   if (nama === 'Makanan')
-    return <FaUtensils className="text-white mr-4 text-xl" />;
+    return <FaUtensils className="mr-4 text-xl text-white" />;
   if (nama === 'Minuman')
-    return <FaCoffee className="text-white mr-4 text-xl" />;
+    return <FaCoffee className="mr-4 text-xl text-white" />;
   if (nama === 'Cemilan')
-    return <FaCheese className="text-white mr-4 text-xl" />;
+    return <FaCheese className="mr-4 text-xl text-white" />;
 };
 
 export default class ListCategory extends React.Component {
@@ -49,9 +49,9 @@ export default class ListCategory extends React.Component {
         } sm:translate-x-0`}
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto  bg-gray-800">
-          <div className="flex justify-center items-center mb-5">
-            <h1 className="font-bold text-white text-start text-2xl">
+        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-800">
+          <div className="flex items-center justify-center mb-5">
+            <h1 className="text-2xl font-bold text-white text-start">
               KasirExpress
             </h1>
             {/* Button X */}
@@ -61,7 +61,7 @@ export default class ListCategory extends React.Component {
               data-drawer-toggle="default-sidebar"
               aria-controls="default-sidebar"
               type="button"
-              className="ms-auto px-3 py-2 text-sm rounded-md sm:hidden float-right bg-white"
+              className="float-right px-3 py-2 text-sm bg-white rounded-md ms-auto sm:hidden"
             >
               <BsXLg />
             </button>
@@ -71,7 +71,7 @@ export default class ListCategory extends React.Component {
           {categories &&
             categories.map((category) => (
               <ul
-                className="space-y-2 font-medium mb-3 cursor-pointer"
+                className="mb-3 space-y-2 font-medium cursor-pointer"
                 key={category.id}
               >
                 <li
@@ -83,7 +83,7 @@ export default class ListCategory extends React.Component {
                   onClick={() => changeCategory(category.nama)}
                 >
                   <div className="flex items-center p-3 rounded-md">
-                    <span className="ml-3 flex justify-center items-center text-xl text-white">
+                    <span className="flex items-center justify-center ml-3 text-xl text-white">
                       <IconCategory nama={category.nama} />
                       {category.nama}
                     </span>

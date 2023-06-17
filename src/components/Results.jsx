@@ -120,16 +120,16 @@ export default class Results extends React.Component {
     return (
       <>
         {keranjangs.length !== 0 && (
-          <div className="lg:w-96 h-screen">
+          <div className="h-screen lg:w-96">
             {keranjangs.map((menuKeranjang) => (
               <div
                 key={menuKeranjang.id}
-                className="flex mb-6 border-b-2 border-gray-300 p-4 cursor-pointer"
+                className="flex p-4 mb-6 border-b-2 border-gray-300 cursor-pointer"
                 onClick={() => this.handleShowModal(menuKeranjang)}
               >
                 {/* Badge */}
-                <div className="bg-blue-600 text-white font-semibold w-6 h-6 inline-flex items-center rounded-full mr-2">
-                  <p className="text-white mx-auto">{menuKeranjang.jumlah}</p>
+                <div className="inline-flex items-center w-6 h-6 mr-2 font-semibold text-white bg-blue-600 rounded-full">
+                  <p className="mx-auto text-white">{menuKeranjang.jumlah}</p>
                 </div>
 
                 {/* Deskripsi */}
@@ -141,7 +141,7 @@ export default class Results extends React.Component {
                 </div>
 
                 {/* Total Harga */}
-                <p className="font-semibold ms-auto text-gray-700">
+                <p className="font-semibold text-gray-700 ms-auto">
                   Rp. {numberWithCommas(menuKeranjang.total_harga)}
                 </p>
               </div>
