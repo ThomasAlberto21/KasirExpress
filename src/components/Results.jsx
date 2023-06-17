@@ -74,6 +74,7 @@ export default class Results extends React.Component {
     axios
       .put(API_URL + 'keranjangs/' + this.state.keranjangDetail.id, data)
       .then(() => {
+        this.props.getListsKeranjangs();
         Swal.fire({
           icon: 'success',
           timer: 1500,
@@ -92,6 +93,7 @@ export default class Results extends React.Component {
     axios
       .delete(API_URL + 'keranjangs/' + id)
       .then(() => {
+        this.props.getListsKeranjangs();
         Swal.fire({
           icon: 'error',
           timer: 1500,
