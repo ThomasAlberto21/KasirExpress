@@ -50,8 +50,7 @@ const Modal = ({
 
               <div className="mb-6 px-6 pt-6">
                 <p className="text-white font-semibold">
-                  Total Harga : Rp.{' '}
-                  {numberWithCommas(keranjangDetail.total_harga)}
+                  Total Harga : Rp. {numberWithCommas(totalHarga)}
                 </p>
 
                 <div className="quantity mt-2">

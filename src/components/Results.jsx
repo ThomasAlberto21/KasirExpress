@@ -46,7 +46,7 @@ export default class Results extends React.Component {
       this.setState({
         jumlah: this.state.jumlah - 1,
         totalHarga:
-          this.state.keranjangDetail.product.harga * (this.state.jumlah + 1),
+          this.state.keranjangDetail.product.harga * (this.state.jumlah - 1),
       });
     }
   };
