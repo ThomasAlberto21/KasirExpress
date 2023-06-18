@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Results from '../components/Results';
