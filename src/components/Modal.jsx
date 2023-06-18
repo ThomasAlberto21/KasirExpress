@@ -114,7 +114,7 @@ const Modal = ({
           <div className="relative bg-gray-800 rounded-lg shadow">
             <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Kosong
+                Kosong.
               </h3>
               <button
                 type="button"
