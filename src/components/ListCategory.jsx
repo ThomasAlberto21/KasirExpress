@@ -52,7 +52,7 @@ const ListCategory = ({
           <h1 className="text-2xl font-bold text-white text-start">
             KasirExpress
           </h1>
-          {/* Button X */}
+          {/* Button X. */}
           <button
             onClick={toggleSidebar}
             data-drawer-target="default-sidebar"
