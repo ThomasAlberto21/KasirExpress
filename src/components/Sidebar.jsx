@@ -10,7 +10,7 @@ const Sidebar = ({ changeCategory, categoriYangDipilih }) => {
   };
 
   return (
-    <div>
+    <div className="sidebar">
       <button
         type="button"
         onClick={toggleSidebar}

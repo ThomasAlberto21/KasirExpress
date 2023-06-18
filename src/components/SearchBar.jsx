@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import axios from 'axios';
 import { useState } from 'react';
+import axios from 'axios';
 import { BiSearch } from 'react-icons/bi';
 import { API_URL } from '../api/api';
 
@@ -37,7 +37,7 @@ const SearchBar = ({ handleSearch, setAllProducts }) => {
         Search
       </label>
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-white text-2xl">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 text-2xl text-white pointer-events-none">
           <BiSearch />
         </div>
         <input

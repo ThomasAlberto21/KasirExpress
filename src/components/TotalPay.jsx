@@ -27,7 +27,7 @@ const TotalPay = ({ keranjangs }) => {
         navigate('/success');
       })
       .catch((error) => {
-        console.error('Terjadi kesalahan dalam mengirim pesanan:', error);
+        console.error('Terjadi kesalahan dalam mengirim pesanan :', error);
       });
   };
 

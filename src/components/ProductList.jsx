@@ -15,7 +15,7 @@ const ProductList = ({ menu, addCarts }) => {
       </a>
       <div className="px-5 py-3">
         <p className="my-3 italic text-white opacity-50">--{category.nama}</p>
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
           {nama}
         </h5>
         <p className="mb-3 font-normal text-white">
