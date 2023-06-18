@@ -1,7 +1,7 @@
+import { useEffect } from 'react';
 import axios from 'axios';
 import successOrderImg from '../assets/success_order.svg';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 import { API_URL } from '../api/api';
 
 const Success = () => {
