@@ -21,8 +21,8 @@ const Modal = ({
         <>
           <div className="relative bg-gray-800 rounded-lg shadow">
             <div className="flex items-start justify-between p-6 border-b rounded-t dark:border-gray-600">
-              <h1 className="text-2xl font-semibold text-gray-900 dark:text-white ">
-                {product && product.nama}
+              <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                {product?.nama}
                 {product && (
                   <p className="mt-1 text-lg font-semibold text-blue-400">
                     (Rp. {numberWithCommas(product.harga)})
@@ -86,7 +86,7 @@ const Modal = ({
                 className="block p-2.5 w-full text-sm text-white bg-gray-700 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
               ></textarea>
 
-              {/* Button */}
+              {/* Buttons */}
               <div className="flex items-center space-x-2 rounded-b dark:border-gray-600">
                 <button
                   data-modal-hide="defaultModal"

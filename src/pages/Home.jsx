@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Results from '../components/Results';
@@ -15,38 +16,38 @@ const Home = () => {
   const [categoriYangDipilih, setCategoriYangDipilih] = useState('Makanan');
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      fetchProducts();
-      getListsKeranjangs();
-    }, 50);
+    const fetchData = async () => {
+      await fetchProducts();
+      await getListsKeranjangs();
+    };
+
+    const interval = setInterval(fetchData, 50);
 
     return () => {
       clearInterval(interval);
     };
   }, [categoriYangDipilih, keranjangs]);
 
-  const fetchProducts = () => {
-    axios
-      .get(API_URL + 'products?category.nama=' + categoriYangDipilih)
-      .then((res) => {
-        const menus = res.data;
-        setMenus(menus);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const fetchProducts = async () => {
+    try {
+      const res = await axios.get(
+        API_URL + 'products?category.nama=' + categoriYangDipilih
+      );
+      const menus = res.data;
+      setMenus(menus);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const getListsKeranjangs = () => {
-    axios
-      .get(API_URL + 'keranjangs')
-      .then((res) => {
-        const keranjangs = res.data;
-        setKeranjangs(keranjangs);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const getListsKeranjangs = async () => {
+    try {
+      const res = await axios.get(API_URL + 'keranjangs');
+      const keranjangs = res.data;
+      setKeranjangs(keranjangs);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const changeCategory = (value) => {
@@ -54,56 +55,48 @@ const Home = () => {
     setMenus([]);
   };
 
-  const addCarts = (value) => {
-    axios
-      .get(API_URL + 'keranjangs?product.id=' + value.id)
-      .then((res) => {
-        if (res.data.length === 0) {
-          const keranjang = {
-            jumlah: 1,
-            total_harga: value.harga,
-            product: value,
-          };
+  const addCarts = async (value) => {
+    try {
+      const res = await axios.get(
+        API_URL + 'keranjangs?product.id=' + value.id
+      );
 
-          axios
-            .post(API_URL + 'keranjangs', keranjang)
-            .then(() => {
-              getListsKeranjangs();
-              Swal.fire({
-                icon: 'success',
-                timer: 1500,
-                showConfirmButton: false,
-                title: keranjang.product.nama + ' Sukses Masuk Keranjang',
-              });
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        } else {
-          const keranjang = {
-            jumlah: res.data[0].jumlah + 1,
-            total_harga: res.data[0].total_harga + value.harga,
-            product: value,
-          };
+      if (res.data.length === 0) {
+        const keranjang = {
+          jumlah: 1,
+          total_harga: value.harga,
+          product: value,
+        };
 
-          axios
-            .put(API_URL + 'keranjangs/' + res.data[0].id, keranjang)
-            .then(() => {
-              Swal.fire({
-                icon: 'success',
-                timer: 1500,
-                showConfirmButton: false,
-                title: keranjang.product.nama + ' Sukses Masuk Keranjang',
-              });
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        await axios.post(API_URL + 'keranjangs', keranjang);
+
+        getListsKeranjangs();
+
+        Swal.fire({
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
+          title: keranjang.product.nama + ' Sukses Masuk Keranjang',
+        });
+      } else {
+        const keranjang = {
+          jumlah: res.data[0].jumlah + 1,
+          total_harga: res.data[0].total_harga + value.harga,
+          product: value,
+        };
+
+        await axios.put(API_URL + 'keranjangs/' + res.data[0].id, keranjang);
+
+        Swal.fire({
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
+          title: keranjang.product.nama + ' Sukses Masuk Keranjang',
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSearch = (search) => {

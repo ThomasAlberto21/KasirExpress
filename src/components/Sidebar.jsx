@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import ListCategory from './ListCategory';
-
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Sidebar = ({ changeCategory, categoriYangDipilih }) => {

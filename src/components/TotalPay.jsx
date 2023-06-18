@@ -7,6 +7,7 @@ import { API_URL } from '../api/api';
 
 const TotalPay = ({ keranjangs }) => {
   const navigate = useNavigate();
+
   const submitTotalBayar = (totalBayar) => {
     const pesanan = {
       total_bayar: totalBayar,
@@ -30,14 +31,15 @@ const TotalPay = ({ keranjangs }) => {
       });
   };
 
-  const totalBayar = keranjangs.reduce(function (result, item) {
-    return result + item.total_harga;
-  }, 0);
+  const totalBayar = keranjangs.reduce(
+    (result, item) => result + item.total_harga,
+    0
+  );
 
   return (
     <main>
       <div className="flex justify-between">
-        <h4 className="font-bold text-blue-500">Total Bayar :</h4>
+        <h4 className="font-bold text-blue-500">Total Bayar:</h4>
         <p className="font-semibold text-gray-700 ms-auto">
           Rp. {numberWithCommas(totalBayar)}
         </p>

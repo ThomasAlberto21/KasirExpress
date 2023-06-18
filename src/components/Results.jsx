@@ -8,11 +8,11 @@ import { numberWithCommas } from '../utils/numberWithCommas';
 import { API_URL } from '../api/api';
 
 const Results = ({ keranjangs, getListsKeranjangs }) => {
-  const [jumlah, setJumlah] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [keranjangDetail, setKeranjangDetail] = useState(null);
+  const [jumlah, setJumlah] = useState(0);
   const [keterangan, setKeterangan] = useState('');
   const [totalHarga, setTotalHarga] = useState(0);
-  const [keranjangDetail, setKeranjangDetail] = useState(false);
 
   const handleShowModal = (menuKeranjang) => {
     setShowModal(true);
@@ -26,15 +26,18 @@ const Results = ({ keranjangs, getListsKeranjangs }) => {
     setShowModal(false);
   };
 
+  const updateJumlahAndTotalHarga = (newJumlah) => {
+    setJumlah(newJumlah);
+    setTotalHarga(keranjangDetail.product.harga * newJumlah);
+  };
+
   const tambahPesanan = () => {
-    setJumlah((prevJumlah) => prevJumlah + 1);
-    setTotalHarga(keranjangDetail.product.harga * (jumlah + 1));
+    updateJumlahAndTotalHarga(jumlah + 1);
   };
 
   const kurangPesanan = () => {
     if (jumlah !== 1) {
-      setJumlah((prevJumlah) => prevJumlah - 1);
-      setTotalHarga(keranjangDetail.product.harga * (jumlah - 1));
+      updateJumlahAndTotalHarga(jumlah - 1);
     }
   };
 
@@ -98,20 +101,15 @@ const Results = ({ keranjangs, getListsKeranjangs }) => {
               className="flex p-4 mb-6 border-b-2 border-gray-300 cursor-pointer"
               onClick={() => handleShowModal(menuKeranjang)}
             >
-              {/* Badge */}
               <div className="inline-flex items-center w-6 h-6 mr-2 font-semibold text-white bg-blue-600 rounded-full">
                 <p className="mx-auto text-white">{menuKeranjang.jumlah}</p>
               </div>
-
-              {/* Deskripsi */}
               <div className="text-black ms-3">
                 <h1 className="font-normal">{menuKeranjang.product.nama}</h1>
                 <p className="font-normal">
                   Rp. {numberWithCommas(menuKeranjang.product.harga)}
                 </p>
               </div>
-
-              {/* Total Harga */}
               <p className="font-semibold text-gray-700 ms-auto">
                 Rp. {numberWithCommas(menuKeranjang.total_harga)}
               </p>

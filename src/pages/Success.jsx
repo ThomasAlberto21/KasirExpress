@@ -1,14 +1,14 @@
 import axios from 'axios';
 import successOrderImg from '../assets/success_order.svg';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { API_URL } from '../api/api';
 
 const Success = () => {
   useEffect(() => {
-    axios
-      .get(API_URL + 'keranjangs')
-      .then(async (res) => {
+    const deleteKeranjangs = async () => {
+      try {
+        const res = await axios.get(API_URL + 'keranjangs');
         const keranjangs = res.data;
         await Promise.all(
           keranjangs.map(async (item) => {
@@ -18,17 +18,19 @@ const Success = () => {
             return response;
           })
         );
-      })
-      .catch((error) => {
+      } catch (error) {
         console.log(error);
-      });
+      }
+    };
+
+    deleteKeranjangs();
   }, []);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <img src={successOrderImg} alt="Sucess Order" className="mb-5 w-96" />
+      <img src={successOrderImg} alt="Success Order" className="mb-5 w-96" />
       <h1 className="text-4xl font-bold text-gray-700">Sukses</h1>
-      <p className="font-normal">TerimaKasih Sudah Memesan</p>
+      <p className="font-normal">Terima Kasih Sudah Memesan</p>
 
       <Link
         to="/"

@@ -1,17 +1,22 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BsXLg } from 'react-icons/bs';
+import { useState, useEffect } from 'react';
 import { FaUtensils, FaCoffee, FaCheese } from 'react-icons/fa';
 import { API_URL } from '../api/api';
 
 const IconCategory = ({ nama }) => {
-  if (nama === 'Makanan')
-    return <FaUtensils className="mr-4 text-xl text-white" />;
-  if (nama === 'Minuman')
-    return <FaCoffee className="mr-4 text-xl text-white" />;
-  if (nama === 'Cemilan')
-    return <FaCheese className="mr-4 text-xl text-white" />;
+  let IconComponent;
+
+  if (nama === 'Makanan') {
+    IconComponent = <FaUtensils className="mr-4 text-xl text-white" />;
+  } else if (nama === 'Minuman') {
+    IconComponent = <FaCoffee className="mr-4 text-xl text-white" />;
+  } else if (nama === 'Cemilan') {
+    IconComponent = <FaCheese className="mr-4 text-xl text-white" />;
+  }
+
+  return IconComponent;
 };
 
 const ListCategory = ({
@@ -61,29 +66,28 @@ const ListCategory = ({
         </div>
 
         {/* Links Navigations */}
-        {categories &&
-          categories.map((category) => (
-            <ul
-              className="mb-3 space-y-2 font-medium cursor-pointer"
-              key={category.id}
+        {categories.map((category) => (
+          <ul
+            className="mb-3 space-y-2 font-medium cursor-pointer"
+            key={category.id}
+          >
+            <li
+              className={`${
+                categoriYangDipilih === category.nama
+                  ? 'bg-blue-600 text-gray-700 rounded-md '
+                  : ''
+              }`}
+              onClick={() => changeCategory(category.nama)}
             >
-              <li
-                className={`${
-                  categoriYangDipilih === category.nama
-                    ? 'bg-blue-600 text-gray-700 rounded-md '
-                    : ''
-                }`}
-                onClick={() => changeCategory(category.nama)}
-              >
-                <div className="flex items-center p-3 rounded-md">
-                  <span className="flex items-center justify-center ml-3 text-xl text-white">
-                    <IconCategory nama={category.nama} />
-                    {category.nama}
-                  </span>
-                </div>
-              </li>
-            </ul>
-          ))}
+              <div className="flex items-center p-3 rounded-md">
+                <span className="flex items-center justify-center ml-3 text-xl text-white">
+                  <IconCategory nama={category.nama} />
+                  {category.nama}
+                </span>
+              </div>
+            </li>
+          </ul>
+        ))}
       </div>
     </aside>
   );
